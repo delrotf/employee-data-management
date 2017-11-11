@@ -1,3 +1,5 @@
+// ng g class employee.model
+
 export class Employee {
     $key: string;
     name: string;
