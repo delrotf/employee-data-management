@@ -1,3 +1,4 @@
+import { EmployeeService } from './../shared/employee.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
   }
