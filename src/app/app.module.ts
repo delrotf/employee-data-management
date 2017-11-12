@@ -19,6 +19,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficeFieldComponent } from './employees/employee/office-field/office-field.component';
 import { EmailFieldComponent } from './employees/employee/email-field/email-field.component';
+import { FirstnameFieldComponent } from './employees/employee/firstname-field/firstname-field.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EmailFieldComponent } from './employees/employee/email-field/email-fiel
     EmployeeComponent,
     EmployeeListComponent,
     OfficeFieldComponent,
-    EmailFieldComponent
+    EmailFieldComponent,
+    FirstnameFieldComponent
   ],
   imports: [
     BrowserModule,
