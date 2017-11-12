@@ -5,6 +5,7 @@ export class Employee {
     firstname: string;
     middlename: string;
     lastname: string;
+    email: string;
     position: string;
     office: string;
     salary: number;
