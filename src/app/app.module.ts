@@ -1,8 +1,10 @@
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import NoopAnimationsModule for no polyfill.
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 import { NgModule } from '@angular/core';
 
@@ -26,7 +28,8 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
