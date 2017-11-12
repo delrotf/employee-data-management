@@ -2,7 +2,9 @@
 
 export class Employee {
     $key: string;
-    name: string;
+    firstname: string;
+    middlename: string;
+    lastname: string;
     position: string;
     office: string;
     salary: number;
