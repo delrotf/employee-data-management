@@ -1,5 +1,6 @@
 import { EmployeeService } from './../shared/employee.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
