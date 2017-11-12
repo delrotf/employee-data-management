@@ -23,6 +23,7 @@ import { FirstnameFieldComponent } from './employees/employee/firstname-field/fi
 import { MiddlenameFieldComponent } from './employees/employee/middlename-field/middlename-field.component';
 import { LastnameFieldComponent } from './employees/employee/lastname-field/lastname-field.component';
 import { PositionFieldComponent } from './employees/employee/position-field/position-field.component';
+import { SalaryFieldComponent } from './employees/employee/salary-field/salary-field.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PositionFieldComponent } from './employees/employee/position-field/posi
     FirstnameFieldComponent,
     MiddlenameFieldComponent,
     LastnameFieldComponent,
-    PositionFieldComponent
+    PositionFieldComponent,
+    SalaryFieldComponent
   ],
   imports: [
     BrowserModule,
