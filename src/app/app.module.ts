@@ -18,6 +18,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficeFieldComponent } from './employees/employee/office-field/office-field.component';
+import { EmailFieldComponent } from './employees/employee/email-field/email-field.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OfficeFieldComponent } from './employees/employee/office-field/office-f
     EmployeesComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    OfficeFieldComponent
+    OfficeFieldComponent,
+    EmailFieldComponent
   ],
   imports: [
     BrowserModule,
