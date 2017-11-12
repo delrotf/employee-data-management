@@ -21,6 +21,7 @@ import { OfficeFieldComponent } from './employees/employee/office-field/office-f
 import { EmailFieldComponent } from './employees/employee/email-field/email-field.component';
 import { FirstnameFieldComponent } from './employees/employee/firstname-field/firstname-field.component';
 import { MiddlenameFieldComponent } from './employees/employee/middlename-field/middlename-field.component';
+import { LastnameFieldComponent } from './employees/employee/lastname-field/lastname-field.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MiddlenameFieldComponent } from './employees/employee/middlename-field/
     OfficeFieldComponent,
     EmailFieldComponent,
     FirstnameFieldComponent,
-    MiddlenameFieldComponent
+    MiddlenameFieldComponent,
+    LastnameFieldComponent
   ],
   imports: [
     BrowserModule,
