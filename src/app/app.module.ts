@@ -25,6 +25,7 @@ import { LastnameFieldComponent } from './employees/employee/lastname-field/last
 import { PositionFieldComponent } from './employees/employee/position-field/position-field.component';
 import { SalaryFieldComponent } from './employees/employee/salary-field/salary-field.component';
 import { GenderFieldComponent } from './employees/employee/gender-field/gender-field.component';
+import { AddressFieldsComponent } from './employees/employee/address-fields/address-fields.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { GenderFieldComponent } from './employees/employee/gender-field/gender-f
     LastnameFieldComponent,
     PositionFieldComponent,
     SalaryFieldComponent,
-    GenderFieldComponent
+    GenderFieldComponent,
+    AddressFieldsComponent
   ],
   imports: [
     BrowserModule,
