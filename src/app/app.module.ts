@@ -30,6 +30,7 @@ import { AddressFieldComponent } from './employees/employee/address-fields/addre
 // tslint:disable-next-line:max-line-length
 import { CountryStateCityFieldsComponent } from './employees/employee/address-fields/country-state-city-fields/country-state-city-fields.component';
 import { CountryFieldComponent } from './employees/employee/address-fields/country-state-city-fields/country-field/country-field.component';
+import { StateFieldComponent } from './employees/employee/address-fields/country-state-city-fields/state-field/state-field.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CountryFieldComponent } from './employees/employee/address-fields/count
     AddressFieldComponent,
     CountryStateCityFieldsComponent,
     CountryFieldComponent,
+    StateFieldComponent,
   ],
   imports: [
     BrowserModule,
