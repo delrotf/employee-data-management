@@ -1,0 +1,10 @@
+<mat-form-field class="example-full-width">
+    <mat-select placeholder="City" [formControl]="myControl" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let city of cities" [value]="city">
+            {{city.name}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="myControl.hasError('required')">Please choose a state</mat-error>
+    <mat-hint>{{myControl.value?.id}}</mat-hint>
+</mat-form-field>
