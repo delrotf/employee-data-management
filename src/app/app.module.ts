@@ -27,6 +27,9 @@ import { SalaryFieldComponent } from './employees/employee/salary-field/salary-f
 import { GenderFieldComponent } from './employees/employee/gender-field/gender-field.component';
 import { AddressFieldsComponent } from './employees/employee/address-fields/address-fields.component';
 import { AddressFieldComponent } from './employees/employee/address-fields/address-field/address-field.component';
+// tslint:disable-next-line:max-line-length
+import { CountryStateCityFieldsComponent } from './employees/employee/address-fields/country-state-city-fields/country-state-city-fields.component';
+import { CountryFieldComponent } from './employees/employee/address-fields/country-state-city-fields/country-field/country-field.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { AddressFieldComponent } from './employees/employee/address-fields/addre
     SalaryFieldComponent,
     GenderFieldComponent,
     AddressFieldsComponent,
-    AddressFieldComponent
+    AddressFieldComponent,
+    CountryStateCityFieldsComponent,
+    CountryFieldComponent,
   ],
   imports: [
     BrowserModule,
