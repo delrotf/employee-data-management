@@ -32,6 +32,7 @@ import { CountryStateCityFieldsComponent } from './employees/employee/address-fi
 import { CountryFieldComponent } from './employees/employee/address-fields/country-state-city-fields/country-field/country-field.component';
 import { StateFieldComponent } from './employees/employee/address-fields/country-state-city-fields/state-field/state-field.component';
 import { CityFieldComponent } from './employees/employee/address-fields/country-state-city-fields/city-field/city-field.component';
+import { PostalCodeFieldComponent } from './employees/employee/address-fields/postal-code-field/postal-code-field.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { CityFieldComponent } from './employees/employee/address-fields/country-
     CountryFieldComponent,
     StateFieldComponent,
     CityFieldComponent,
+    PostalCodeFieldComponent,
   ],
   imports: [
     BrowserModule,
