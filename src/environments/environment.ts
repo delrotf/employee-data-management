@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  edmFirebaseConfig: {
     apiKey: 'AIzaSyBkxDAnjTwQ3sIAo8VnMaqU72D3kHt8gcc',
     authDomain: 'employee-data-management-e025e.firebaseapp.com',
     databaseURL: 'https://employee-data-management-e025e.firebaseio.com',

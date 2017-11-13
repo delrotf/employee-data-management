@@ -58,7 +58,7 @@ import { PostalCodeFieldComponent } from './employees/employee/address-fields/po
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.edmFirebaseConfig),
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MaterialModule,
