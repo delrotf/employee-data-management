@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class CountryFieldComponent implements OnInit {
+  @Output() selectEmitter: EventEmitter<any> = new EventEmitter();
   myControl = new FormControl('', [Validators.required]);
 
   countries = [
@@ -1246,5 +1247,9 @@ export class CountryFieldComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public emitSelection() {
+    this.selectEmitter.emit(this.myControl.value);
   }
 }

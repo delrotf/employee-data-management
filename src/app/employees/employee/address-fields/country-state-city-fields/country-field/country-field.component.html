@@ -1,10 +1,10 @@
 <mat-form-field class="example-full-width">
-    <mat-select placeholder="Country" [formControl]="myControl" required>
+    <mat-select placeholder="Country" [formControl]="myControl" (selectionChange)="emitSelection()" required>
         <mat-option>--</mat-option>
         <mat-option *ngFor="let country of countries" [value]="country">
             {{country.name}}
         </mat-option>
     </mat-select>
     <mat-error *ngIf="myControl.hasError('required')">Please choose a country</mat-error>
-    <mat-hint>{{myControl.value?.id}}</mat-hint>
+    <mat-hint>States will show after you select</mat-hint>
 </mat-form-field>

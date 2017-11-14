@@ -33,6 +33,7 @@ import { CountryFieldComponent } from './employees/employee/address-fields/count
 import { StateFieldComponent } from './employees/employee/address-fields/country-state-city-fields/state-field/state-field.component';
 import { CityFieldComponent } from './employees/employee/address-fields/country-state-city-fields/city-field/city-field.component';
 import { PostalCodeFieldComponent } from './employees/employee/address-fields/postal-code-field/postal-code-field.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -59,11 +60,13 @@ import { PostalCodeFieldComponent } from './employees/employee/address-fields/po
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.edmFirebaseConfig),
+    AngularFireDatabaseModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
