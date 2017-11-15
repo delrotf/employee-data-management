@@ -22,23 +22,32 @@ export class CityFieldComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.cities === null || this.cities === undefined) {
       this.myControl.disable();
+      this.myControl.reset();
     } else {
       this.myControl.enable();
-
-      this.filteredOptions = this.myControl.valueChanges
-      .startWith(null)
-      .map(city => city && typeof city === 'object' ? city.name : city)
-      .map(name => name ? this.filter(name) : this.cities.slice());
     }
   }
 
   ngOnInit() {
     this.myControl.disable();
-  }
+
+    this.filteredOptions = this.myControl.valueChanges
+    .startWith(null)
+    .map(city => city && typeof city === 'object' ? city.name : city)
+    .map(name => name ? this.filter(name) : this.slice(this.cities));
+}
 
   filter(name: string): City[] {
-    return this.cities.filter(option =>
-      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    if (this.cities !== null && this.cities !== undefined) {
+      return this.cities.filter(option =>
+        option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    }
+  }
+
+  slice(cities: City[]) {
+    if (cities !== null && cities !== undefined) {
+      return cities.slice();
+    }
   }
 
   displayFn(city: City): any {
