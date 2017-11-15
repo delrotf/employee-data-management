@@ -28,7 +28,6 @@ export class CountryStateCityFieldsComponent implements OnInit {
   }
 
   public receiveSelectedCountry(country: Country): void {
-    console.log('received selected country');
     if (country != null) {
       this.states = this.statesDb.filter(state => (<State>state).country_id === country.id);
       if (this.states === null || this.states.length === 0) {

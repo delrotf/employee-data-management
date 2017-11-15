@@ -1,5 +1,9 @@
+import { Country } from './country.model';
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-country-field',
@@ -9,9 +13,11 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class CountryFieldComponent implements OnInit {
   @Output() selectEmitter: EventEmitter<any> = new EventEmitter();
-  myControl = new FormControl('', [Validators.required]);
+  myControl: FormControl = new FormControl('', [Validators.required]);
 
-  countries = [
+  filteredOptions: Observable<Country[]>;
+
+  countries: Country[] = [
     {
       id: '1',
       sortname: 'AF',
@@ -1247,7 +1253,20 @@ export class CountryFieldComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
+    this.filteredOptions = this.myControl.valueChanges
+    .startWith(null)
+    .map(country => country && typeof country === 'object' ? country.name : country)
+    .map(name => name ? this.filter(name) : this.countries.slice());
+}
+
+filter(name: string): Country[] {
+  return this.countries.filter(option =>
+    option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+}
+
+displayFn(country: Country): any {
+  return country ? country.name : country;
+}
 
   public emitSelection() {
     this.selectEmitter.emit(this.myControl.value);

@@ -1,4 +1,4 @@
-<mat-form-field class="example-full-width">
+<!-- <mat-form-field class="example-full-width">
     <mat-select placeholder="City" [formControl]="myControl" required>
         <mat-option>--</mat-option>
         <mat-option *ngFor="let city of cities" [value]="city">
@@ -7,4 +7,15 @@
     </mat-select>
     <mat-error *ngIf="myControl.hasError('required')">Please choose a state</mat-error>
     <mat-hint>Please choose N/A if city is not available</mat-hint>
+</mat-form-field> -->
+
+<mat-form-field class="example-full-width">
+    <input type="text" placeholder="City" aria-label="City" matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+            {{ city.name }}
+        </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="myControl.hasError('required')">Please choose a city</mat-error>
+    <mat-hint>Please type in your city if not avaialable from the selection</mat-hint>
 </mat-form-field>
