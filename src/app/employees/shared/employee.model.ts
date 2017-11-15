@@ -3,9 +3,11 @@
 export class Employee {
     $key: string;
 
-    firstname: string;
-    middlename: string;
-    lastname: string;
+    name: {
+        firstname: string;
+        middlename: string;
+        lastname: string;
+    };
 
     birthday: Date;
     gender: string;

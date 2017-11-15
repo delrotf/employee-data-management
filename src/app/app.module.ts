@@ -19,9 +19,9 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficeFieldComponent } from './employees/employee/office-field/office-field.component';
 import { EmailFieldComponent } from './employees/employee/email-field/email-field.component';
-import { FirstnameFieldComponent } from './employees/employee/firstname-field/firstname-field.component';
-import { MiddlenameFieldComponent } from './employees/employee/middlename-field/middlename-field.component';
-import { LastnameFieldComponent } from './employees/employee/lastname-field/lastname-field.component';
+import { FirstnameFieldComponent } from './employees/employee/name-fields/firstname-field/firstname-field.component';
+import { MiddlenameFieldComponent } from './employees/employee/name-fields/middlename-field/middlename-field.component';
+import { LastnameFieldComponent } from './employees/employee/name-fields/lastname-field/lastname-field.component';
 import { PositionFieldComponent } from './employees/employee/position-field/position-field.component';
 import { SalaryFieldComponent } from './employees/employee/salary-field/salary-field.component';
 import { GenderFieldComponent } from './employees/employee/gender-field/gender-field.component';
@@ -34,6 +34,7 @@ import { StateFieldComponent } from './employees/employee/address-fields/country
 import { CityFieldComponent } from './employees/employee/address-fields/country-state-city-fields/city-field/city-field.component';
 import { PostalCodeFieldComponent } from './employees/employee/address-fields/postal-code-field/postal-code-field.component';
 import { HttpModule } from '@angular/http';
+import { NameFieldsComponent } from './employees/employee/name-fields/name-fields.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { HttpModule } from '@angular/http';
     StateFieldComponent,
     CityFieldComponent,
     PostalCodeFieldComponent,
+    NameFieldsComponent,
   ],
   imports: [
     BrowserModule,
