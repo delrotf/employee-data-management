@@ -1,0 +1,27 @@
+mat-datepicker-toggle .mat-icon {
+    width: 2em !important;
+    height: 2em !important;
+}
+
+.mat-form-field {
+    width: 180px;
+}
+
+input[type="date"] {
+    outline: none;
+}
+
+input[type="date"]::-webkit-clear-button {
+    font-size: 18px;
+    height: 30px;
+    position: relative;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    /* height: 50px;
+    width: 50px; */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}

@@ -35,6 +35,7 @@ import { CityFieldComponent } from './employees/employee/address-fields/country-
 import { PostalCodeFieldComponent } from './employees/employee/address-fields/postal-code-field/postal-code-field.component';
 import { HttpModule } from '@angular/http';
 import { NameFieldsComponent } from './employees/employee/name-fields/name-fields.component';
+import { BirthdayFieldComponent } from './employees/employee/birthday-field/birthday-field.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NameFieldsComponent } from './employees/employee/name-fields/name-field
     CityFieldComponent,
     PostalCodeFieldComponent,
     NameFieldsComponent,
+    BirthdayFieldComponent,
   ],
   imports: [
     BrowserModule,
