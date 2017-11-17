@@ -17,7 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   encapsulation: ViewEncapsulation.None
 })
 export class EmailFieldComponent implements OnInit {
-  emailFormControl = new FormControl('', [
+  myControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
