@@ -1,27 +1,63 @@
-mat-datepicker-toggle .mat-icon {
+/* mat-datepicker-toggle .mat-icon {
     width: 2em !important;
     height: 2em !important;
 }
 
-.mat-form-field {
+app-birthday-field .mat-form-field {
     width: 180px;
+} */
+
+app-birthday-field {
+    display: flex;
 }
 
-input[type="date"] {
+app-birthday-field svg {
+transform: scale(2,2);
+transform-origin: right bottom;
+}
+
+app-birthday-field .mat-form-field-infix {
+    width: 156px;
+}
+/*
+app-birthday-field .mat-form-field-prefix .mat-icon-button .mat-icon, .mat-form-field-suffix .mat-icon-button .mat-icon {
+height: 3em;
+width: 3em;
+}
+
+app-birthday-field .mat-button-wrapper {
+    height: 3em;
+    width: 3em;
+}
+
+app-birthday-field .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
+    height: 3rem;
+    width: 3rem;
+}
+*/
+app-birthday-field input[type="date"] {
     outline: none;
+    width: 8em;
 }
 
-input[type="date"]::-webkit-clear-button {
-    font-size: 18px;
+app-birthday-field input[type="date"]::-webkit-clear-button {
+    /* font-size: 30px;
     height: 30px;
-    position: relative;
+    position: relative; */
+    display: none;
 }
 
-input[type="date"]::-webkit-inner-spin-button {
+app-birthday-field input[type="date"]::-webkit-inner-spin-button {
     /* height: 50px;
     width: 50px; */
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+app-birthday-field:hover {
+    /* height: 50px;
+    width: 50px; */
+    /* transform: scale(2,2); */
+}
+
+app-birthday-field input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }

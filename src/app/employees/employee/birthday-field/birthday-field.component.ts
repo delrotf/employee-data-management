@@ -25,8 +25,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   encapsulation: ViewEncapsulation.None
 })
 export class BirthdayFieldComponent implements OnInit {
-  atMost60: Date;
-  atLeast18: Date;
+  // at most 60;
+  minDate: Date;
+  // at least 18;
+  maxDate: Date;
+  maxAge = 60;
+  minAge = 18;
+
   age: number;
 
   // events: string[] = [];
@@ -43,38 +48,43 @@ export class BirthdayFieldComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.atLeast18 = new Date(new Date().valueOf() - (18 * 31557600000));
-    console.log('this.atLeast18 ' + this.atLeast18);
-    this.atMost60 = new Date(new Date().valueOf() - (60 * 31557600000));
-    console.log('this.atMost60 ' + this.atMost60);
+    this.maxDate = new Date(new Date().valueOf() - (this.minAge * 31557600000));
+    console.log('this.maxDate ' + this.maxDate);
+    this.minDate = new Date(new Date().valueOf() - (this.maxAge * 31557600000));
+    console.log('this.minDate ' + this.minDate);
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     // this.events.push(`${type}: ${event.value}`);
     this.event = event;
     this._computeAGe();
+    if (this.age < this.minAge || this.age > this.maxAge) {
+      this.myControl.setValue(null);
+    }
     console.log('eventfired ' + event.value);
   }
 
   eventFromHidden(type: string, event: MatDatepickerInputEvent<Date>) {
     this.event = event;
-    this._formatDate(event.value);
-    this.myControl.setValue(this._formatDate(event.value));
+    this.formatDate(event.value);
+    this.myControl.setValue(this.formatDate(event.value));
     this._computeAGe();
     console.log('hiddenEvent ' + event.value);
   }
 
-  private _formatDate(value: Date): string {
+  public formatDate(value: Date): string {
     // this.events.push(`${type}: ${event.value}`);
-    this.event = event;
-    const year = value.getFullYear();
-    const month = value.getMonth() + 1;
-    const date = value.getDate();
-    // formatted to yyyy-MM-dd
-    const formatted = ((year < 1000) ? '0' + year : year) + '-'
-      + ((month < 10) ? '0' + month : month) + '-' + ((date < 10) ? '0' + date : date);
+    if (value !== null && value !== undefined) {
+      this.event = event;
+      const year = value.getFullYear();
+      const month = value.getMonth() + 1;
+      const date = value.getDate();
+      // formatted to yyyy-MM-dd
+      const formatted = ((year < 1000) ? '0' + year : year) + '-'
+        + ((month < 10) ? '0' + month : month) + '-' + ((date < 10) ? '0' + date : date);
 
-    return formatted;
+      return formatted;
+    }
   }
 
   private _computeAGe(): void {
