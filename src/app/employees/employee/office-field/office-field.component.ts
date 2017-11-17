@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
   encapsulation: ViewEncapsulation.None
 })
 export class OfficeFieldComponent implements OnInit {
-  officeCtrl: FormControl;
+  myControl: FormControl;
   filteredOffices: Observable<any[]>;
 
   offices: any[] = [
