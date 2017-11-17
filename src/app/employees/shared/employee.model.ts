@@ -5,13 +5,13 @@ export class Employee {
 
     name: {
         firstname: string;
-        middlename: string;
         lastname: string;
     };
 
     birthday: Date;
     gender: string;
     civilStatus: string;
+
     address: {
         address: string;
         city: string;
