@@ -38,14 +38,19 @@ export class EmployeeComponent implements OnInit {
   positionControl = new FormControl('', Validators.required);
   skillsControl = new FormControl('');
   hireDateControl = new FormControl('', Validators.required);
-  requirementSubmittedControl = new FormControl('', Validators.required);
+  travelControl = new FormControl('');
+  nightshiftControl = new FormControl('');
+  workAtHomeControl = new FormControl('');
+  stockOptionControl = new FormControl('');
   officeControl = new FormControl('', Validators.required);
   salaryControl = new FormControl('', Validators.required);
 
   matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
+    this.employee = new Employee();
     this.createForm();
+
   }
 
   ngOnInit() {
@@ -71,8 +76,13 @@ export class EmployeeComponent implements OnInit {
       tel: this.telControl,
       position: this.positionControl,
       skills: this.skillsControl,
+      preferences: this.fb.group({
+        travel: this.travelControl,
+        nightShift: this.nightshiftControl,
+        workAtHome: this.workAtHomeControl,
+        stockOption: this.stockOptionControl
+      }),
       hireDate: this.hireDateControl,
-      requirementSubmitted: this.requirementSubmittedControl,
       office: this.officeControl,
       salary: this.salaryControl
     });
