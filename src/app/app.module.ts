@@ -37,6 +37,7 @@ import { HttpModule } from '@angular/http';
 import { NameFieldsComponent } from './employees/employee/name-fields/name-fields.component';
 import { BirthdayFieldComponent } from './employees/employee/birthday-field/birthday-field.component';
 import { CivilStatusFieldComponent } from './employees/employee/civil-status-field/civil-status-field.component';
+import { TelComponent } from './employees/employee/tel-field/tel-field.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CivilStatusFieldComponent } from './employees/employee/civil-status-fie
     NameFieldsComponent,
     BirthdayFieldComponent,
     CivilStatusFieldComponent,
+    TelComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,9 +34,9 @@ export class EmployeeComponent implements OnInit {
   cityControl = new FormControl('', Validators.required);
   postalCodeControl = new FormControl('', Validators.required);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-  telControl = new FormControl('', Validators.required);
+  telControl = new FormControl('');
   positionControl = new FormControl('', Validators.required);
-  skillsControl = new FormControl('', Validators.required);
+  skillsControl = new FormControl('');
   hireDateControl = new FormControl('', Validators.required);
   requirementSubmittedControl = new FormControl('', Validators.required);
   officeControl = new FormControl('', Validators.required);
