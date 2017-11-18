@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address-field',
@@ -7,8 +8,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AddressFieldComponent implements OnInit {
+  @Input() addressControl: FormControl;
 
-  constructor() { }
+  constructor() {
+    this.addressControl = new FormControl('', Validators.required);
+  }
 
   ngOnInit() {
   }

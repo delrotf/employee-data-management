@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -17,14 +17,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   encapsulation: ViewEncapsulation.None
 })
 export class EmailFieldComponent implements OnInit {
-  myControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  @Input() emailControl: FormControl;
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor() {
+    this.emailControl = new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]);
+  }
 
   ngOnInit() {
   }

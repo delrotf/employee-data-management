@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -17,11 +17,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   encapsulation: ViewEncapsulation.None
 })
 export class PostalCodeFieldComponent implements OnInit {
-  @Input() myControl = new FormControl('', [Validators.required]);
+  @Input() postalCodeControl: FormControl;
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor() {
+    this.postalCodeControl = new FormControl('', Validators.required);
+  }
 
   ngOnInit() {
   }

@@ -11,31 +11,33 @@ import { FormControl, Validators } from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class CityFieldComponent implements OnInit, OnChanges {
+  @Input() cityControl: FormControl;
+
   @Input() cities: City[];
 
   filteredOptions: Observable<City[]>;
 
-  myControl = new FormControl('', [Validators.required]);
-
-  constructor() { }
+  constructor() {
+    this.cityControl = new FormControl('', [Validators.required]);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.cities === null || this.cities === undefined) {
-      this.myControl.disable();
-      this.myControl.reset();
+      this.cityControl.disable();
+      this.cityControl.reset();
     } else {
-      this.myControl.enable();
+      this.cityControl.enable();
     }
   }
 
   ngOnInit() {
-    this.myControl.disable();
+    this.cityControl.disable();
 
-    this.filteredOptions = this.myControl.valueChanges
-    .startWith(null)
-    .map(city => city && typeof city === 'object' ? city.name : city)
-    .map(name => name ? this.filter(name) : this.slice(this.cities));
-}
+    this.filteredOptions = this.cityControl.valueChanges
+      .startWith(null)
+      .map(city => city && typeof city === 'object' ? city.name : city)
+      .map(name => name ? this.filter(name) : this.slice(this.cities));
+  }
 
   filter(name: string): City[] {
     if (this.cities !== null && this.cities !== undefined) {

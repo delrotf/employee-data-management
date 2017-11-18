@@ -1,3 +1,3 @@
-<app-country-field (selectEmitter)="receiveSelectedCountry($event)"></app-country-field>
-<app-state-field [states]="states" (selectEmitter)="receiveSelectedState($event)"></app-state-field>
-<app-city-field [cities]="cities"></app-city-field>
+<app-country-field [countryControl]="countryControl" (selectEmitter)="receiveSelectedCountry($event)"></app-country-field>
+<app-state-field [stateControl]="stateControl" [states]="states" (selectEmitter)="receiveSelectedState($event)"></app-state-field>
+<app-city-field [cityControl]="cityControl" [cities]="cities"></app-city-field>

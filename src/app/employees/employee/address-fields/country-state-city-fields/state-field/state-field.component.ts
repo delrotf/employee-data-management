@@ -1,6 +1,6 @@
 import { State } from './state.model';
 import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, NgModule, SimpleChanges } from '@angular/core';
-import { FormControl, Validators, NgForm } from '@angular/forms';
+import { FormControl, Validators, NgForm, FormGroup } from '@angular/forms';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
@@ -10,26 +10,27 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   encapsulation: ViewEncapsulation.None
 })
 export class StateFieldComponent implements OnInit, OnChanges {
+  @Input() stateControl: FormControl;
   @Input() states: State[];
   @Output() selectEmitter: EventEmitter<any> = new EventEmitter();
 
-  myControl = new FormControl('', [Validators.required]);
-
-  constructor() { }
+  constructor() {
+    this.stateControl = new FormControl('', [Validators.required]);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.states === null) {
-      this.myControl.disable();
+      this.stateControl.disable();
     } else {
-      this.myControl.enable();
+      this.stateControl.enable();
     }
   }
 
   ngOnInit() {
-    this.myControl.disable();
+    this.stateControl.disable();
   }
 
   public emitSelection() {
-    this.selectEmitter.emit(this.myControl.value);
+    this.selectEmitter.emit(this.stateControl.value);
   }
 }

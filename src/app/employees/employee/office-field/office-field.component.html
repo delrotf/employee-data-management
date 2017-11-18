@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input matInput placeholder="Office" aria-label="Office" [matAutocomplete]="auto" [formControl]="myControl">
+    <input matInput placeholder="Office" aria-label="Office" [matAutocomplete]="auto" [formControl]="officeControl">
     <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let office of filteredOffices | async" [value]="office.name">
             <img style="vertical-align:middle;" aria-hidden src="{{office.flag}}" height="25" />

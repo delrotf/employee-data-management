@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
-    <input matInput placeholder="Firstname" [formControl]="myControl" [errorStateMatcher]="matcher" required>
-    <mat-error *ngIf="myControl.hasError('required')">
+    <input matInput placeholder="Firstname" [formControl]="firstnameControl" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="firstnameControl.hasError('required')">
         Firstname is <strong>required</strong>
     </mat-error>
 </mat-form-field>

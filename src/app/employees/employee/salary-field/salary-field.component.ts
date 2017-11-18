@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-salary-field',
@@ -7,8 +8,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class SalaryFieldComponent implements OnInit {
+@Input() salaryControl: FormControl;
 
-  constructor() { }
+  constructor() {
+    this.salaryControl = new FormControl('', Validators.required);
+  }
 
   ngOnInit() {
   }

@@ -1,3 +1,18 @@
-<p>
-  employee works!
-</p>
+<form [formGroup]="employeeForm" novalidate>
+
+    <!-- <form #employeeForm="ngForm"> -->
+    <!-- (ngSubmit)="onSubmit(employeeForm)" -->
+    <app-name-fields [firstnameControl]="firstnameControl" [lastnameControl]="lastnameControl"></app-name-fields>
+    <app-birthday-field [birthdayControl]="birthdayControl"></app-birthday-field>
+    <!-- <app-address-fields [addressControl]="addressControl" [countryControl]="countryControl" [stateControl]="stateControl" [cityControl]="cityControl" [postalCodeControl]="postalCodeControl"></app-address-fields> -->
+    <app-gender-field [genderControl]="genderControl"></app-gender-field>
+    <!-- <app-civil-status-field [civilStatusControl]="civilStatusControl"></app-civil-status-field> -->
+    <app-email-field [emailControl]="emailControl"></app-email-field>
+    <app-position-field [positionControl]="positionControl"></app-position-field>
+    <app-office-field [officeControl]="officeControl"></app-office-field>
+    <app-salary-field [salaryControl]="salaryControl"></app-salary-field>
+    <p>Form value: {{employeeForm.value | json}}</p>
+    <!-- <p>{{employeeForm.get('personalInfo.name.firstname').hasError('required') | json}}</p> -->
+    <!-- <p>{{employeeForm.get('personalInfo.gender').hasError('required') | json}}</p> -->
+    <button mat-button>Click me!</button>
+</form>

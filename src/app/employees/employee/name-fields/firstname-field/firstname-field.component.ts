@@ -1,6 +1,7 @@
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -16,14 +17,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./firstname-field.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class FirstnameFieldComponent implements OnInit {
-  myControl = new FormControl('', [Validators.required]);
+export class FirstnameFieldComponent implements OnInit, OnChanges {
+  @Input() firstnameControl: FormControl;
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor() {
+    this.firstnameControl = new FormControl('', [Validators.required]); // when stand alone.
+  }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
   }
 
 }

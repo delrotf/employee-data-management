@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
   encapsulation: ViewEncapsulation.None
 })
 export class OfficeFieldComponent implements OnInit {
-  myControl: FormControl;
+  @Input() officeControl: FormControl;
   filteredOffices: Observable<any[]>;
 
   offices: any[] = [
@@ -49,10 +49,7 @@ export class OfficeFieldComponent implements OnInit {
   ];
 
   constructor() {
-    this.officeCtrl = new FormControl();
-    this.filteredOffices = this.officeCtrl.valueChanges
-        .startWith(null)
-        .map(office => office ? this.filteroffices(office) : this.offices.slice());
+    this.officeControl = new FormControl('', Validators.required);
   }
 
   filteroffices(state: string) {
@@ -61,6 +58,9 @@ export class OfficeFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+    this.filteredOffices = this.officeControl.valueChanges
+    .startWith(null)
+    .map(office => office ? this.filteroffices(office) : this.offices.slice());
+}
 
 }

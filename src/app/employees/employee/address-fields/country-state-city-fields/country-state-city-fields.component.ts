@@ -1,10 +1,11 @@
+import { FormControl } from '@angular/forms';
 import { City } from './city-field/city.model';
 import { CityService } from './../../../shared/city.service';
 import { CityFieldComponent } from './city-field/city-field.component';
 import { State } from './state-field/state.model';
 import { StateService } from './../../../shared/state.service';
 import { Country } from './country-field/country.model';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-country-state-city-fields',
@@ -14,6 +15,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CountryStateCityFieldsComponent implements OnInit {
+  @Input() countryControl: FormControl;
+  @Input() stateControl: FormControl;
+  @Input() cityControl: FormControl;
+
   statesDb: State[];
   states: State[];
 

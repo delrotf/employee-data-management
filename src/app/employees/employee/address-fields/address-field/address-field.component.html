@@ -1,4 +1,4 @@
 <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Address" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+    <textarea matInput placeholder="Address" [formControl]="addressControl" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
     <mat-hint>Complete address excluding the country, state, city, and postal code</mat-hint>
 </mat-form-field>

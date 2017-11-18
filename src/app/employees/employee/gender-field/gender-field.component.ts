@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-gender-field',
@@ -7,14 +8,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class GenderFieldComponent implements OnInit {
+  @Input() genderControl: FormControl;
+
   gender: string;
 
-    genders = [
-      'Male',
-      'Female'
-    ];
+  genders = [
+    'Male',
+    'Female'
+  ];
 
-  constructor() { }
+  constructor() {
+    this.genderControl = new FormControl('', Validators.required);
+  }
 
   ngOnInit() {
   }
