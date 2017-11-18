@@ -38,6 +38,7 @@ import { NameFieldsComponent } from './employees/employee/name-fields/name-field
 import { BirthdayFieldComponent } from './employees/employee/birthday-field/birthday-field.component';
 import { CivilStatusFieldComponent } from './employees/employee/civil-status-field/civil-status-field.component';
 import { TelComponent } from './employees/employee/tel-field/tel-field.component';
+import { SkillsFieldComponent } from './employees/employee/skills-field/skills-field.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { TelComponent } from './employees/employee/tel-field/tel-field.component
     BirthdayFieldComponent,
     CivilStatusFieldComponent,
     TelComponent,
+    SkillsFieldComponent,
   ],
   imports: [
     BrowserModule,
