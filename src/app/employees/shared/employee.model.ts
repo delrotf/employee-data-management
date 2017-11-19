@@ -25,7 +25,12 @@ export class Employee {
     position: string;
     skills: string[];
     hireDate: Date;
-    requirementsSubmitted: string[];
+    preferences: {
+        travel: boolean,
+        nightshift: boolean,
+        workAtHome: boolean,
+        stockOption: boolean
+    };
     office: string;
     salary: number;
 }
