@@ -28,5 +28,9 @@ export class HireDateFieldComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.minDate = '1976-02-02';
+    this.maxDate = formatDate(new Date());
+
+    this.hireDateControl.setValidators([Validators.required, minDate(new Date(this.minDate)), maxDate(new Date(this.maxDate))]);
   }
 }
