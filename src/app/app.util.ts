@@ -1,4 +1,5 @@
 export function formatDate(value: Date): string {
+  value = removeTime(value);
   if (value !== null && value !== undefined) {
     const year = value.getFullYear();
     const month = value.getMonth() + 1;
@@ -13,6 +14,7 @@ export function formatDate(value: Date): string {
 }
 
 export function formatDateLocale(value: Date): string {
+  value = removeTime(value);
   if (value !== null && value !== undefined) {
     const year = value.getFullYear();
     const month = value.getMonth() + 1;
@@ -24,4 +26,16 @@ export function formatDateLocale(value: Date): string {
       + ((year < 1000) ? '0' + year : year);
     return formatted;
   }
+}
+
+export function computeAge(date: Date): number {
+  const diff = removeTime(new Date()).valueOf() - removeTime(new Date(date)).valueOf();
+  return Math.floor(diff / 31557600000);
+}
+
+export function removeTime(date: Date): Date {
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  return date;
 }

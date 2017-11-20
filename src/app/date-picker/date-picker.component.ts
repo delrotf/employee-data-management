@@ -2,7 +2,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, Validators, FormGroupDirective, NgForm, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material';
-import { formatDate, formatDateLocale } from '../app.util';
+import { formatDate, formatDateLocale, computeAge } from '../app.util';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,6 +23,10 @@ export class DatePickerComponent implements OnInit {
   @Input() placeholderText: string;
   @Input() minDate: string;
   @Input() maxDate: string;
+  @Input() minAge: number;
+  @Input() maxAge: number;
+
+  age: number;
 
   minDateLocale: string;
   maxDateLocale: string;
@@ -43,8 +47,13 @@ export class DatePickerComponent implements OnInit {
     if (this.maxDate) {
       this.maxDateLocale = formatDateLocale(new Date(this.maxDate));
     }
+
     this.hiddenControl.valueChanges.subscribe((value) => {
       this.dateControl.setValue(formatDate(new Date(value)));
+
+      if (this.minAge && this.maxAge) {
+        this.age = computeAge(new Date(value));
+      }
     });
   }
 }

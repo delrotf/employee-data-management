@@ -9,13 +9,25 @@
 
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi="true" #picker disabled="false" startView="year"></mat-datepicker>
-    <mat-hint *ngIf="minDateLocale && maxDateLocale">From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong>
+    <mat-hint>
+        <div *ngIf="minAge && maxAge">
+            <span>Age range: {{minAge}} to {{maxAge}}. </span>
+            <span *ngIf="!dateControl.errors">Age is {{age}}</span>
+        </div>
+        <div *ngIf="minDateLocale && maxDateLocale">From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong></div>
     </mat-hint>
-
     <mat-error *ngIf="dateControl.hasError('required')">
         Date is <strong>required</strong> and must be <strong>valid</strong>
     </mat-error>
     <mat-error *ngIf="dateControl.hasError('minDate') || dateControl.hasError('maxDate')">
         From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong>
+    </mat-error>
+    <mat-error *ngIf="dateControl.hasError('minAge') || dateControl.hasError('maxAge')">
+        <div>
+            Age range: <strong>{{minAge}}</strong> to <strong>{{maxAge}}</strong>
+        </div>
+        <div>
+            From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong>
+        </div>
     </mat-error>
 </mat-form-field>
