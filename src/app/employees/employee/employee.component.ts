@@ -4,6 +4,8 @@ import { EmployeeService } from './../shared/employee.service';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material';
+import { minDate, maxDate } from '../../employees/validators/dateValidator';
+import { formatDate } from '../../app.util';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,7 +24,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class EmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   @Input() employee: Employee;
-
   firstnameControl = new FormControl('', Validators.required);
   lastnameControl = new FormControl('', Validators.required);
   birthdayControl = new FormControl('', Validators.required);
@@ -37,7 +38,11 @@ export class EmployeeComponent implements OnInit {
   telControl = new FormControl('');
   positionControl = new FormControl('', Validators.required);
   skillsControl = new FormControl('');
-  hireDateControl = new FormControl('', Validators.required);
+
+  minDate = '1976-02-02';
+  maxDate = formatDate(new Date());
+  hireDateControl = new FormControl('', [Validators.required, minDate(new Date(this.minDate)), maxDate(new Date(this.maxDate))]);
+
   travelControl = new FormControl('');
   nightshiftControl = new FormControl('');
   workAtHomeControl = new FormControl('');

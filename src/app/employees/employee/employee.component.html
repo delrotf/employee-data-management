@@ -13,11 +13,12 @@
     <app-skills-field [skillsControl]="skillsControl"></app-skills-field>
     <app-office-field [officeControl]="officeControl"></app-office-field>
     <app-salary-field [salaryControl]="salaryControl"></app-salary-field>
+    <app-hire-date-field [hireDateControl]="hireDateControl" [minDate]="minDate" [maxDate]="maxDate"></app-hire-date-field>
     <mat-checkbox [formControl]="travelControl">Willing to travel</mat-checkbox>
     <mat-checkbox [formControl]="nightshiftControl">Willing to work nighthshift</mat-checkbox>
     <mat-checkbox [formControl]="workAtHomeControl">Can work at home</mat-checkbox>
     <mat-checkbox [formControl]="stockOptionControl">Stock Option</mat-checkbox>
-    <!-- <app-preferences-field [preferencesControl]="preferencesControl"></app-preferences-field> -->
+
     <p>Form value: {{employeeForm.value | json}}</p>
     <!-- <p>{{employeeForm.get('personalInfo.name.firstname').hasError('required') | json}}</p> -->
     <!-- <p>{{employeeForm.get('personalInfo.gender').hasError('required') | json}}</p> -->
