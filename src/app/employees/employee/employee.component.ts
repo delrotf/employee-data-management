@@ -22,11 +22,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   encapsulation: ViewEncapsulation.None
 })
 export class EmployeeComponent implements OnInit {
-  employeeForm: FormGroup;
   @Input() employee: Employee;
+
+  employeeForm: FormGroup;
   firstnameControl = new FormControl('', Validators.required);
   lastnameControl = new FormControl('', Validators.required);
-  birthdayControl = new FormControl('', Validators.required);
+  birthdayControl = new FormControl();
   genderControl = new FormControl('', Validators.required);
   civilStatusControl = new FormControl('', Validators.required);
   addressControl = new FormControl('', Validators.required);
@@ -39,9 +40,7 @@ export class EmployeeComponent implements OnInit {
   positionControl = new FormControl('', Validators.required);
   skillsControl = new FormControl('');
 
-  minDate = '1976-02-02';
-  maxDate = formatDate(new Date());
-  hireDateControl = new FormControl('', [Validators.required, minDate(new Date(this.minDate)), maxDate(new Date(this.maxDate))]);
+  hireDateControl = new FormControl('', Validators.required);
 
   travelControl = new FormControl('');
   nightshiftControl = new FormControl('');
