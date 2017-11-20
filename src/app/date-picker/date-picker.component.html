@@ -1,0 +1,21 @@
+<mat-form-field>
+    <!-- <input maxlength="50" matInput [matDatepicker]="picker" placeholder="Hire Date" [formControl]="dateControl" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" [errorStateMatcher]="matcher" required> -->
+
+    <!-- dateInput and dateChange don't work with inputs of type date. -->
+    <input type="date" matInput [placeholder]="placeholderText" [formControl]="dateControl" [errorStateMatcher]="matcher" [min]="minDate" [max]="maxDate" required>
+    <!-- hidden field for date picker that syncs with date input. the event gives chance to format the date from the picker to match required format of date input. -->
+    <!-- the datepickers format does not match the required format for the date input so a hidden input is used instead to intercept datepicker's value. then just sync both inputs. -->
+    <input [min]="minDate" [max]="maxDate" [matDatepicker]="picker" [formControl]="hiddenControl" [value]="dateControl.value" hidden>
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker disabled="false" startView="year"></mat-datepicker>
+    <mat-hint *ngIf="minDateLocale && maxDateLocale">From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong>
+    </mat-hint>
+
+    <mat-error *ngIf="dateControl.hasError('required')">
+        Date is <strong>required</strong> and must be <strong>valid</strong>
+    </mat-error>
+    <mat-error *ngIf="dateControl.hasError('minDate') || dateControl.hasError('maxDate')">
+        From <strong>{{minDateLocale}}</strong> to <strong>{{maxDateLocale}}</strong>
+    </mat-error>
+</mat-form-field>

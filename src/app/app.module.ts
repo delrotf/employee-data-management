@@ -39,6 +39,8 @@ import { BirthdayFieldComponent } from './employees/employee/birthday-field/birt
 import { CivilStatusFieldComponent } from './employees/employee/civil-status-field/civil-status-field.component';
 import { TelComponent } from './employees/employee/tel-field/tel-field.component';
 import { SkillsFieldComponent } from './employees/employee/skills-field/skills-field.component';
+import { HireDateFieldComponent } from './employees/employee/hire-date-field/hire-date-field.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { SkillsFieldComponent } from './employees/employee/skills-field/skills-f
     CivilStatusFieldComponent,
     TelComponent,
     SkillsFieldComponent,
+    HireDateFieldComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,
