@@ -11,14 +11,16 @@ app-birthday-field {
     display: flex;
 }
 
-app-birthday-field svg {
-transform: scale(2,2);
-transform-origin: right bottom;
+app-birthday-field .mat-icon-button {
+    transform: scale(2, 2);
+    transform-origin: right bottom;
 }
 
 app-birthday-field .mat-form-field-infix {
     width: 156px;
 }
+
+
 /*
 app-birthday-field .mat-form-field-prefix .mat-icon-button .mat-icon, .mat-form-field-suffix .mat-icon-button .mat-icon {
 height: 3em;
@@ -35,6 +37,7 @@ app-birthday-field .mat-form-field-prefix .mat-icon-button, .mat-form-field-suff
     width: 3rem;
 }
 */
+
 app-birthday-field input[type="date"] {
     outline: none;
     width: 8em;
