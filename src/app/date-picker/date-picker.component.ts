@@ -48,6 +48,12 @@ export class DatePickerComponent implements OnInit {
       this.maxDateLocale = formatDateLocale(new Date(this.maxDate));
     }
 
+    this.dateControl.valueChanges.subscribe((value) => {
+      if (this.minAge && this.maxAge) {
+        this.age = computeAge(new Date(value));
+      }
+    });
+
     this.hiddenControl.valueChanges.subscribe((value) => {
       this.dateControl.setValue(formatDate(new Date(value)));
 
