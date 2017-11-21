@@ -16,3 +16,7 @@ label {
 .example-selected-value {
     margin: 15px 0;
 }
+
+app-gender-field .mat-error {
+    font-size: 75%;
+}
