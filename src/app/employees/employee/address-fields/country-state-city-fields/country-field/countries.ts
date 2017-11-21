@@ -1,4 +1,6 @@
-  countries: Country[] = [
+import { Country } from './country.model';
+
+  export const COUNTRIES: Country[] = [
     {
       id: '1',
       sortname: 'AF',
