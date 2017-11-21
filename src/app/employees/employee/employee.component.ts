@@ -57,6 +57,15 @@ export class EmployeeComponent implements OnInit {
 
   }
 
+  onSubmit() {
+    if (this.genderControl.hasError('required')) {
+      this.genderControl.markAsTouched();
+    }
+    if (this.civilStatusControl.hasError('required')) {
+      this.civilStatusControl.markAsTouched();
+    }
+  }
+
   ngOnInit() {
   }
 

@@ -1,4 +1,4 @@
 <mat-form-field class="example-full-width">
     <input type="number" matInput [formControl]="salaryControl" placeholder="Salary">
-    <mat-error *ngIf="salaryControl.hasError('required')">Salary is required</mat-error>
+    <mat-error *ngIf="salaryControl.hasError('required')">Salary is <strong>required</strong></mat-error>
 </mat-form-field>

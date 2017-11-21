@@ -2,5 +2,5 @@
     <mat-radio-button class="example-radio-button" *ngFor="let status of statuses" [value]="status">
         {{status}}
     </mat-radio-button>
-    <mat-error *ngIf="civilStatusControl.hasError('required')">Status is required</mat-error>
+    <mat-error *ngIf="civilStatusControl.hasError('required') && civilStatusControl.touched">Status is <strong>required</strong></mat-error>
 </mat-radio-group>
