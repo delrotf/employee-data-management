@@ -1,3 +1,4 @@
+import { COUNTRIES } from './countries';
 import { Country } from './country.model';
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
@@ -15,9 +16,8 @@ export class CountryFieldComponent implements OnInit {
   @Input() countryControl: FormControl;
   @Output() selectEmitter: EventEmitter<any> = new EventEmitter();
 
-  filteredOptions: Observable<Country[]>;
-  // temporary
-  countries: Country[] = [];
+  filteredOptions: Observable<string[]>;
+  countries: string[];
 
   constructor() {
     this.countryControl = new FormControl('', [Validators.required]);
@@ -25,19 +25,18 @@ export class CountryFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredOptions = this.countryControl.valueChanges
-      .startWith(null)
-      .map(country => country && typeof country === 'object' ? country.name : country)
-      .map(name => name ? this.filter(name) : this.countries.slice());
+    setTimeout(() => {
+      this.countries = COUNTRIES;
+      console.log(' this.countryControl.value ' + this.countryControl.value);
+      this.filteredOptions = this.countryControl.valueChanges
+        .startWith('')
+        .map(val => this.filter(val));
+    });
   }
 
-  filter(name: string): Country[] {
+  filter(val: string): string[] {
     return this.countries.filter(option =>
-      option.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
-  }
-
-  displayFn(country: Country): any {
-    return country ? country.name : country;
+      option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 
   public emitSelection() {

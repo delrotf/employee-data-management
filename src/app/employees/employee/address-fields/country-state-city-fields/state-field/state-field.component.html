@@ -1,4 +1,4 @@
-<mat-form-field class="example-full-width">
+<!-- <mat-form-field class="example-full-width">
     <mat-select placeholder="State" [formControl]="stateControl" (selectionChange)="emitSelection()" required>
         <mat-option>--</mat-option>
         <mat-option *ngFor="let state of states" [value]="state">
@@ -6,5 +6,26 @@
         </mat-option>
     </mat-select>
     <mat-error *ngIf="stateControl.hasError('required')">Please choose a state</mat-error>
+    <mat-hint>Cities will be enabled after you select</mat-hint>
+</mat-form-field> -->
+
+<!-- <mat-form-field class="example-full-width">
+    <input type="text" placeholder="State" aria-label="State" matInput [formControl]="stateControl" (selectionChange)="emitSelection()" [matAutocomplete]="auto" required>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{ option.name }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field> -->
+
+<mat-form-field class="example-full-width">
+    <input type="text" placeholder="State" aria-label="State" matInput [formControl]="stateControl" [matAutocomplete]="auto" required>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <!-- <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> -->
+        <mat-option *ngFor="let state of filteredOptions | async" [value]=" state ">
+            {{ state.name }}
+        </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="stateControl.hasError( 'required') ">Please choose a state</mat-error>
     <mat-hint>Cities will be enabled after you select</mat-hint>
 </mat-form-field>

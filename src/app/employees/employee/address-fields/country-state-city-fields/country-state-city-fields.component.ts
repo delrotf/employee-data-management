@@ -1,73 +1,71 @@
 import { FormControl } from '@angular/forms';
 import { City } from './city-field/city.model';
-import { CityService } from './../../../shared/city.service';
 import { CityFieldComponent } from './city-field/city-field.component';
 import { State } from './state-field/state.model';
-import { StateService } from './../../../shared/state.service';
 import { Country } from './country-field/country.model';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { STATES } from './state-field/states';
+import { CITIES } from './city-field/cities';
+import { COUNTRIES } from './country-field/countries';
 
 @Component({
   selector: 'app-country-state-city-fields',
   templateUrl: './country-state-city-fields.component.html',
   styleUrls: ['./country-state-city-fields.component.css'],
-  providers: [StateService, CityService],
+  providers: [],
   encapsulation: ViewEncapsulation.None
 })
 export class CountryStateCityFieldsComponent implements OnInit {
   @Input() countryControl: FormControl;
   @Input() stateControl: FormControl;
   @Input() cityControl: FormControl;
+  country: string;
+  state: State;
 
-  statesDb: State[];
-  states: State[];
-
-  citiesDb: City[];
-  cities: City[];
-
-  constructor(private stateService: StateService, private cityService: CityService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.statesDb = this.stateService.getStates();
-    this.citiesDb = this.cityService.getCities();
-  }
+//     const stateswithcities = {};
+//     COUNTRIES2.forEach(country => {
+//       const statesArray = STATES.filter(state => (<State>state).country_id === country.id);
+//       const statestrim = [];
+//       statesArray.forEach(state => {
+//         statestrim.push({id: state.id, name: state.name});
+//       });
+//       stateswithcities[country.name] = statestrim;
+//     });
+// console.log(JSON.stringify(stateswithcities));
 
-  public receiveSelectedCountry(country: Country): void {
-    if (country != null) {
-      this.states = this.statesDb.filter(state => (<State>state).country_id === country.id);
-      if (this.states === null || this.states.length === 0) {
-        // this.states = null;
-        this.states = [
-          {
-            id: 'N/A',
-            name: 'N/A',
-            country_id: country.id
-          }
-        ];
-      }
+// const stateswithcities = {};
+//         STATES.forEach(state => {
+//           const citiesArray = CITIES.filter(city => (<City>city).state_id === state.id);
+//           const statestrim = [];
+//           citiesArray.forEach(city => {
+//             statestrim.push(city.name);
+//           });
+//           stateswithcities[state.id] = statestrim;
+//         });
+//     console.log(JSON.stringify(stateswithcities));
 
-      this.cities = null;
-    } else {
-      this.states = null;
-      this.cities = null;
+    if (this.countryControl) {
+      this.countryControl.valueChanges.subscribe(country => {
+        if (country) {
+          this.country = country;
+        } else {
+          this.country = null;
+        }
+      });
     }
-  }
 
-  public receiveSelectedState(state: State): void {
-    if (state != null) {
-      this.cities = this.citiesDb.filter(city => (<City>city).state_id === state.id);
-      if (this.cities === null || this.cities.length === 0) {
-        // this.cities = null;
-        this.cities = [
-          {
-            id: 'N/A',
-            name: 'N/A',
-            state_id: state.id
-          }
-        ];
-      }
-    } else {
-      this.cities = null;
+    if (this.stateControl) {
+      this.stateControl.valueChanges.subscribe(state => {
+        if (state) {
+            console.log('getting cities');
+            this.state = state;
+        } else {
+          this.state = null;
+        }
+      });
     }
   }
 }
