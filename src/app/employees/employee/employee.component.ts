@@ -23,41 +23,43 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EmployeeComponent implements OnInit {
   @Input() employee: Employee;
+  submitted: boolean;
 
   employeeForm: FormGroup;
-  firstnameControl = new FormControl('', Validators.required);
-  lastnameControl = new FormControl('', Validators.required);
+  firstnameControl: FormControl;
+  lastnameControl: FormControl;
   birthdayControl = new FormControl();
-  genderControl = new FormControl('', Validators.required);
-  civilStatusControl = new FormControl('', Validators.required);
-  addressControl = new FormControl('', Validators.required);
-  countryControl = new FormControl('', Validators.required);
-  stateControl = new FormControl('', Validators.required);
-  cityControl = new FormControl('', Validators.required);
-  postalCodeControl = new FormControl('', Validators.required);
-  emailControl = new FormControl('', [Validators.required, Validators.email]);
-  telControl = new FormControl('');
-  positionControl = new FormControl('', Validators.required);
-  skillsControl = new FormControl('');
+  genderControl: FormControl;
+  civilStatusControl: FormControl;
+  addressControl: FormControl;
+  countryControl: FormControl;
+  stateControl: FormControl;
+  cityControl: FormControl;
+  postalCodeControl: FormControl;
+  emailControl: FormControl;
+  telControl: FormControl;
+  positionControl: FormControl;
+  skillsControl: FormControl;
 
-  hireDateControl = new FormControl('', Validators.required);
+  hireDateControl: FormControl;
 
-  travelControl = new FormControl('');
-  nightshiftControl = new FormControl('');
-  workAtHomeControl = new FormControl('');
-  stockOptionControl = new FormControl('');
-  officeControl = new FormControl('', Validators.required);
-  salaryControl = new FormControl('', Validators.required);
+  travelControl: FormControl;
+  nightshiftControl: FormControl;
+  workAtHomeControl: FormControl;
+  stockOptionControl: FormControl;
+  officeControl: FormControl;
+  salaryControl: FormControl;
 
   matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
     this.employee = new Employee();
-    this.createForm();
 
   }
 
   onSubmit() {
+    this.submitted = true;
+
     if (this.genderControl.hasError('required')) {
       this.genderControl.markAsTouched();
     }
@@ -67,6 +69,34 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstnameControl = new FormControl('', Validators.required);
+    this.lastnameControl = new FormControl('', Validators.required);
+    this.birthdayControl = new FormControl('');
+    this.genderControl = new FormControl('', Validators.required);
+    this.civilStatusControl = new FormControl('', Validators.required);
+
+    this.addressControl = new FormControl('', Validators.required);
+    this.countryControl = new FormControl('', Validators.required);
+    this.stateControl = new FormControl('', Validators.required);
+    this.cityControl = new FormControl('', Validators.required);
+    this.postalCodeControl = new FormControl('', Validators.required);
+
+    this.emailControl = new FormControl('', [Validators.required, Validators.email]);
+    this.telControl = new FormControl('');
+    this.positionControl = new FormControl('', Validators.required);
+    this.skillsControl = new FormControl('');
+
+    this.hireDateControl = new FormControl(formatDate(new Date()), Validators.required);
+
+    this.travelControl = new FormControl(false);
+    this.nightshiftControl = new FormControl(false);
+    this.workAtHomeControl = new FormControl(false);
+    this.stockOptionControl = new FormControl(false);
+
+    this.officeControl = new FormControl('', Validators.required);
+    this.salaryControl = new FormControl('', Validators.required);
+
+    this.createForm();
   }
 
   createForm() {
