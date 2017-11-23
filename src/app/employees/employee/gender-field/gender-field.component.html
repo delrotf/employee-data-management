@@ -1,12 +1,12 @@
-<fieldset>
-    <legend>Gender</legend>
-    <div class="gender flex">
-        <!-- <label>Gender: </label> -->
-        <mat-radio-group class="example-radio-group" [formControl]="genderControl" required>
-            <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
-                {{gender}}
-            </mat-radio-button>
-            <mat-error *ngIf="genderControl.hasError('required') && genderControl.touched">Gender is <strong>required</strong></mat-error>
-        </mat-radio-group>
-    </div>
-</fieldset>
+<!-- <fieldset> -->
+<!-- <legend>Gender</legend> -->
+<div class="gender flex">
+    <!-- <label>Gender: </label> -->
+    <mat-radio-group class="example-radio-group" [formControl]="genderControl" required>
+        <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+        </mat-radio-button>
+        <mat-error *ngIf="genderControl.hasError('required') && genderControl.touched">Gender is <strong>required</strong></mat-error>
+    </mat-radio-group>
+</div>
+<!-- </fieldset> -->
