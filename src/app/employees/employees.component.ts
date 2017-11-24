@@ -1,7 +1,6 @@
 import { EmployeeService } from './shared/employee.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { EmployeeDialogComponent } from './employee-dialog/employee-dialog.component';
 import { EmployeeComponent } from './employee/employee.component';
 
 @Component({
