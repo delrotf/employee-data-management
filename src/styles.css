@@ -1,16 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-app-employees {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: cadetblue;
+}
+
+.mat-form-field-wrapper {
+    margin-bottom: 0.75em;
+}
+
+legend {
+    font-size: 14px;
+    color: rgba(0, 0, 0, .54);
+}
+
+app-birthday-field .mat-form-field-wrapper {
+    margin-bottom: 1.75em;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+app-gender-field .mat-error,
+app-civil-status-field .mat-error {
+    font-size: 75%;
+}
+
+app-skills-field .mat-form-field {
+    display: block;
+}
+
+mat-card.mat-card {
+    /* max-width: 412.8px; */
+    margin-bottom: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    min-width: 208px;
+    max-width: 500px;
 }
 
-article {
-    width: 40%;
-}
-
-form {
+mat-card article {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    max-width: 364.8px;
+}
+
+app-gender-field {
+    display: inline-block;
+}
+
+.civil-status mat-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 60px;
+}
+
+.gender,
+.civil-status {
+    margin-bottom: 1.25em;
+}
+
+.preferences {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 50px;
+}
+
+@media screen and (max-width: 556px) {
+    mat-form-field.mat-form-field {
+        display: block;
+    }
+    .civil-status mat-radio-group {
+        height: 150px;
+    }
+    .preferences {
+        height: 96px;
+    }
 }

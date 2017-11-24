@@ -1,9 +1,10 @@
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Employee } from './../shared/employee.model';
 import { EmployeeService } from './../shared/employee.service';
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material';
+import { MatDatepickerInputEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { minDate, maxDate } from '../../employees/validators/dateValidator';
 import { formatDate } from '../../app.util';
 
@@ -19,13 +20,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [EmployeeService],
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
-  submitted: boolean;
+
+  okToClose = false;
 
   employeeForm: FormGroup;
+  submitted: boolean;
   firstnameControl: FormControl;
   lastnameControl: FormControl;
   birthdayControl = new FormControl();
@@ -52,9 +56,21 @@ export class EmployeeComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<EmployeeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private employeeService: EmployeeService) {
     this.employee = new Employee();
 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.submitted) {
+      console.log(this.employeeForm);
+    }
+  }
+  onNoClick(): void {
+    // this.dialogRef.close();
+    console.log('onNoClick');
+    this.dialogRef.close();
   }
 
   onSubmit() {
@@ -66,9 +82,14 @@ export class EmployeeComponent implements OnInit {
     if (this.civilStatusControl.hasError('required')) {
       this.civilStatusControl.markAsTouched();
     }
+
+    if (this.employeeForm.valid) {
+      this.okToClose = true;
+    }
   }
 
   ngOnInit() {
+
     this.firstnameControl = new FormControl('', Validators.required);
     this.lastnameControl = new FormControl('', Validators.required);
     this.birthdayControl = new FormControl('');

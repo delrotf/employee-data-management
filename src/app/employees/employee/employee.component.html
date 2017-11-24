@@ -1,26 +1,57 @@
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" novalidate>
-
     <!-- <form #employeeForm="ngForm"> -->
     <!-- (ngSubmit)="onSubmit(employeeForm)" -->
-    <app-name-fields [firstnameControl]="firstnameControl" [lastnameControl]="lastnameControl"></app-name-fields>
-    <app-birthday-field [birthdayControl]="birthdayControl"></app-birthday-field>
-    <app-gender-field [genderControl]="genderControl"></app-gender-field>
-    <app-civil-status-field [civilStatusControl]="civilStatusControl"></app-civil-status-field>
-    <!-- <app-address-fields [addressControl]="addressControl" [countryControl]="countryControl" [stateControl]="stateControl" [cityControl]="cityControl" [postalCodeControl]="postalCodeControl"></app-address-fields> -->
-    <app-email-field [emailControl]="emailControl"></app-email-field>
-    <app-tel-field [telControl]="telControl"></app-tel-field>
-    <app-position-field [positionControl]="positionControl"></app-position-field>
-    <app-skills-field [skillsControl]="skillsControl"></app-skills-field>
-    <app-office-field [officeControl]="officeControl"></app-office-field>
-    <app-salary-field [salaryControl]="salaryControl"></app-salary-field>
-    <app-hire-date-field [hireDateControl]="hireDateControl"></app-hire-date-field>
-    <mat-checkbox [formControl]="travelControl">Willing to travel</mat-checkbox>
-    <mat-checkbox [formControl]="nightshiftControl">Willing to work nightshift</mat-checkbox>
-    <mat-checkbox [formControl]="workAtHomeControl">Can work at home</mat-checkbox>
-    <mat-checkbox [formControl]="stockOptionControl">Stock Option</mat-checkbox>
-
-    <p>Form value: {{employeeForm.value | json}}</p>
-    <!-- <p>{{employeeForm.get('personalInfo.name.firstname').hasError('required') | json}}</p> -->
-    <!-- <p>{{employeeForm.get('personalInfo.gender').hasError('required') | json}}</p> -->
-    <button mat-button type="submit">click me!</button>
+    <mat-dialog-content>
+        <mat-card>
+            <article>
+                <header>
+                    <mat-card-title>Personal Data</mat-card-title>
+                </header>
+                <main>
+                    <app-name-fields class="flex" [firstnameControl]="firstnameControl" [lastnameControl]="lastnameControl"></app-name-fields>
+                    <app-birthday-field [birthdayControl]="birthdayControl"></app-birthday-field>
+                    <app-gender-field [genderControl]="genderControl"></app-gender-field>
+                    <app-civil-status-field [civilStatusControl]="civilStatusControl"></app-civil-status-field>
+                </main>
+            </article>
+        </mat-card>
+        <mat-card>
+            <article>
+                <header>
+                    <mat-card-title>Contact Info</mat-card-title>
+                </header>
+                <main>
+                    <app-email-field [emailControl]="emailControl"></app-email-field>
+                    <app-tel-field [telControl]="telControl"></app-tel-field>
+                    <app-address-fields [addressControl]="addressControl" [countryControl]="countryControl" [stateControl]="stateControl" [cityControl]="cityControl" [postalCodeControl]="postalCodeControl"></app-address-fields>
+                </main>
+            </article>
+        </mat-card>
+        <mat-card>
+            <article>
+                <header>
+                    <mat-card-title>Employment Data</mat-card-title>
+                </header>
+                <main>
+                    <app-position-field [positionControl]="positionControl"></app-position-field>
+                    <app-office-field [officeControl]="officeControl"></app-office-field>
+                    <app-salary-field [salaryControl]="salaryControl"></app-salary-field>
+                    <app-hire-date-field [hireDateControl]="hireDateControl"></app-hire-date-field>
+                    <mat-card-subtitle>Preferences</mat-card-subtitle>
+                    <div class="preferences">
+                        <mat-checkbox [formControl]="travelControl">Willing to travel</mat-checkbox>
+                        <mat-checkbox [formControl]="nightshiftControl">Willing to work nightshift</mat-checkbox>
+                        <mat-checkbox [formControl]="workAtHomeControl">Can work at home</mat-checkbox>
+                        <mat-checkbox [formControl]="stockOptionControl">Stock Option</mat-checkbox>
+                    </div>
+                    <app-skills-field [skillsControl]="skillsControl"></app-skills-field>
+                </main>
+            </article>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="okToClose" [disabled]="!employeeForm.valid">Submit</button>
+        <button mat-button (click)="onNoClick()">Submit</button>
+    </mat-dialog-actions>
 </form>

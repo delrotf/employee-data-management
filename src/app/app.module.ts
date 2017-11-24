@@ -41,6 +41,7 @@ import { TelComponent } from './employees/employee/tel-field/tel-field.component
 import { SkillsFieldComponent } from './employees/employee/skills-field/skills-field.component';
 import { HireDateFieldComponent } from './employees/employee/hire-date-field/hire-date-field.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { EmployeeDialogComponent } from './employees/employee-dialog/employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,10 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     HttpModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EmployeeComponent
+],
+
 })
 export class AppModule { }

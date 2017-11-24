@@ -1,7 +1,7 @@
 <!-- <fieldset> -->
 <!-- <legend>Gender</legend> -->
-<div class="gender flex">
-    <!-- <label>Gender: </label> -->
+<div class="gender">
+    <legend>Gender</legend>
     <mat-radio-group class="example-radio-group" [formControl]="genderControl" required>
         <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
             {{gender}}

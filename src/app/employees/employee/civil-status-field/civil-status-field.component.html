@@ -1,6 +1,11 @@
-<mat-radio-group class="example-radio-group" [formControl]="civilStatusControl" required>
-    <mat-radio-button class="example-radio-button" *ngFor="let status of statuses" [value]="status">
-        {{status}}
-    </mat-radio-button>
-    <mat-error *ngIf="civilStatusControl.hasError('required') && civilStatusControl.touched">Status is <strong>required</strong></mat-error>
-</mat-radio-group>
+<div class="civil-status">
+    <legend>Civil Status</legend>
+    <div>
+        <mat-radio-group class="example-radio-group" [formControl]="civilStatusControl" required>
+            <mat-radio-button class="example-radio-button" *ngFor="let status of statuses" [value]="status">
+                {{status}}
+            </mat-radio-button>
+            <mat-error *ngIf="civilStatusControl.hasError('required') && civilStatusControl.touched">Status is <strong>required</strong></mat-error>
+        </mat-radio-group>
+    </div>
+</div>

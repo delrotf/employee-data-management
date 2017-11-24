@@ -1,4 +1,4 @@
-<mat-form-field class="demo-chip-list">
+<mat-form-field class="chip-list">
     <mat-chip-list #chipList matInput [formControl]="skillsControl">
         <mat-chip *ngFor="let skill of skills" [selectable]="selectable" [removable]="removable" (remove)="remove(skill)">
             {{skill.name}}
