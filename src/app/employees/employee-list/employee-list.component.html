@@ -1,3 +1,37 @@
-<p>
-  employee-list works!
-</p>
+<div class="mat-table-container mat-elevation-z8">
+    <header class="mat-table-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </header>
+
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- Firstname Column -->
+        <ng-container matColumnDef="employees">
+            <mat-header-cell *matHeaderCellDef> Employees </mat-header-cell>
+            <mat-accordion>
+                <mat-cell *matCellDef="let employee">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{employee.name}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{employee.position}}, {{employee.office}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <app-employee-summary [employee]="employee.employee"></app-employee-summary>
+
+                    </mat-expansion-panel>
+
+                </mat-cell>
+            </mat-accordion>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; let employee"></mat-row>
+        <!-- <mat-row *matRowDef="let row; columns: displayedColumns; let employee" (click)="openDialog(employee)"></mat-row> -->
+    </mat-table>
+</div>
