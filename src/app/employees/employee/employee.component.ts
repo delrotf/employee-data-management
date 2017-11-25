@@ -26,8 +26,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class EmployeeComponent implements OnInit, OnChanges {
   @Input() employee: Employee;
 
-  okToClose = false;
-
   employeeForm: FormGroup;
   submitted: boolean;
   firstnameControl: FormControl;
@@ -56,25 +54,27 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
   matcher = new MyErrorStateMatcher();
 
+  showProgress = false;
+
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<EmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private employeeService: EmployeeService) {
-    this.employee = new Employee();
 
+    if (data) {
+      this.employee = data.employee;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.submitted) {
+    if (this.showProgress) {
       console.log(this.employeeForm);
     }
   }
   onNoClick(): void {
     // this.dialogRef.close();
     console.log('onNoClick');
-    this.dialogRef.close();
   }
 
-  onSubmit() {
-    this.submitted = true;
+  submit() {
 
     if (this.genderControl.hasError('required')) {
       this.genderControl.markAsTouched();
@@ -84,38 +84,42 @@ export class EmployeeComponent implements OnInit, OnChanges {
     }
 
     if (this.employeeForm.valid) {
-      this.okToClose = true;
+      this.showProgress = true;
+      console.log(JSON.stringify(this.employeeForm.value));
+      this.employeeService.insertEmployee(this.employeeForm.value);
+      this.dialogRef.close();
     }
   }
 
   ngOnInit() {
+    const employee = this.employee;
 
-    this.firstnameControl = new FormControl('', Validators.required);
-    this.lastnameControl = new FormControl('', Validators.required);
-    this.birthdayControl = new FormControl('');
-    this.genderControl = new FormControl('', Validators.required);
-    this.civilStatusControl = new FormControl('', Validators.required);
+    this.firstnameControl = new FormControl(employee ? employee.name.firstname : '', Validators.required);
+    this.lastnameControl = new FormControl(employee ? employee.name.lastname : '', Validators.required);
+    this.birthdayControl = new FormControl(employee ? employee.birthday : '');
+    this.genderControl = new FormControl(employee ? employee.gender : '', Validators.required);
+    this.civilStatusControl = new FormControl(employee ? employee.civilStatus : '', Validators.required);
 
-    this.addressControl = new FormControl('', Validators.required);
-    this.countryControl = new FormControl('', Validators.required);
-    this.stateControl = new FormControl('', Validators.required);
-    this.cityControl = new FormControl('', Validators.required);
-    this.postalCodeControl = new FormControl('', Validators.required);
+    this.addressControl = new FormControl(employee ? employee.address.address : '', Validators.required);
+    this.countryControl = new FormControl(employee ? employee.address.country : '', Validators.required);
+    this.stateControl = new FormControl(employee ? employee.address.state : '', Validators.required);
+    this.cityControl = new FormControl(employee ? employee.address.city : '', Validators.required);
+    this.postalCodeControl = new FormControl(employee ? employee.address.postalCode : '', Validators.required);
 
-    this.emailControl = new FormControl('', [Validators.required, Validators.email]);
-    this.telControl = new FormControl('');
-    this.positionControl = new FormControl('', Validators.required);
-    this.skillsControl = new FormControl('');
+    this.emailControl = new FormControl(employee ? employee.email : '', [Validators.required, Validators.email]);
+    this.telControl = new FormControl(employee ? employee.tel : '');
+    this.positionControl = new FormControl(employee ? employee.position : '', Validators.required);
+    this.skillsControl = new FormControl(employee ? employee.skills : '');
 
-    this.hireDateControl = new FormControl(formatDate(new Date()), Validators.required);
+    this.hireDateControl = new FormControl(employee ? employee.hireDate : '', Validators.required);
 
-    this.travelControl = new FormControl(false);
-    this.nightshiftControl = new FormControl(false);
-    this.workAtHomeControl = new FormControl(false);
-    this.stockOptionControl = new FormControl(false);
+    this.travelControl = new FormControl(employee ? employee.preferences.travel : false);
+    this.nightshiftControl = new FormControl(employee ? employee.preferences.nightshift : false);
+    this.workAtHomeControl = new FormControl(employee ? employee.preferences.workAtHome : false);
+    this.stockOptionControl = new FormControl(employee ? employee.preferences.stockOption : false);
 
-    this.officeControl = new FormControl('', Validators.required);
-    this.salaryControl = new FormControl('', Validators.required);
+    this.officeControl = new FormControl(employee ? employee.office : '', Validators.required);
+    this.salaryControl = new FormControl(employee ? employee.salary : '', Validators.required);
 
     this.createForm();
   }
