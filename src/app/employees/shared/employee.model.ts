@@ -14,23 +14,36 @@ export class Employee {
 
     address: {
         address: string;
-        city: string;
         country: string;
-        postal: string;
+        state: string;
+        city: string;
+        postalCode: string;
     };
 
     email: string;
     tel: string;
 
     position: string;
-    skills: string[];
+    skills: Skill[];
     hireDate: Date;
+    office: string;
+    salary: number;
+
     preferences: {
         travel: boolean,
         nightshift: boolean,
         workAtHome: boolean,
         stockOption: boolean
     };
-    office: string;
-    salary: number;
 }
+
+export class Skill {
+    name: string;
+}
+
+export const PreferenceText = {
+    travel: 'Willing to travel: ',
+    nightshift: 'Willing to work nightshift: ',
+    wokrAtHome: 'Can work at home: ',
+    stockOption: 'Stock Option: '
+};

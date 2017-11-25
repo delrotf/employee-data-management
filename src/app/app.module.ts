@@ -41,6 +41,7 @@ import { TelComponent } from './employees/employee/tel-field/tel-field.component
 import { SkillsFieldComponent } from './employees/employee/skills-field/skills-field.component';
 import { HireDateFieldComponent } from './employees/employee/hire-date-field/hire-date-field.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { EmployeeSummaryComponent } from './employees/employee/employee-summary/employee-summary.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     SkillsFieldComponent,
     HireDateFieldComponent,
     DatePickerComponent,
+    EmployeeSummaryComponent,
   ],
   imports: [
     BrowserModule,
