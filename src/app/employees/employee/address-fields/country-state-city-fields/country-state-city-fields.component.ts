@@ -3,10 +3,11 @@ import { City } from './city-field/city.model';
 import { CityFieldComponent } from './city-field/city-field.component';
 import { State } from './state-field/state.model';
 import { Country } from './country-field/country.model';
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges } from '@angular/core';
 import { STATES } from './state-field/states';
 import { CITIES } from './city-field/cities';
 import { COUNTRIES } from './country-field/countries';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-country-state-city-fields',
@@ -15,7 +16,7 @@ import { COUNTRIES } from './country-field/countries';
   providers: [],
   encapsulation: ViewEncapsulation.None
 })
-export class CountryStateCityFieldsComponent implements OnInit {
+export class CountryStateCityFieldsComponent implements OnInit, OnChanges {
   @Input() countryControl: FormControl;
   @Input() stateControl: FormControl;
   @Input() cityControl: FormControl;
@@ -23,6 +24,15 @@ export class CountryStateCityFieldsComponent implements OnInit {
   state: State;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.countryControl) {
+      this.country = this.countryControl.value;
+    }
+    if (this.stateControl) {
+      this.state = this.stateControl.value;
+    }
+  }
 
   ngOnInit() {
 //     const stateswithcities = {};
@@ -60,7 +70,6 @@ export class CountryStateCityFieldsComponent implements OnInit {
     if (this.stateControl) {
       this.stateControl.valueChanges.subscribe(state => {
         if (state) {
-            console.log('getting cities');
             this.state = state;
         } else {
           this.state = null;

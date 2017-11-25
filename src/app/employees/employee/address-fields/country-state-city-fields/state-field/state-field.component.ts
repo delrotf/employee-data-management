@@ -28,13 +28,13 @@ export class StateFieldComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.states = null;
-    this.stateControl.reset();
 
     if (this.country) {
       this.states = STATES[this.country];
       this.stateControl.enable();
       console.log('this.stateControl.value ' + this.stateControl.value);
     } else {
+      this.stateControl.reset();
       this.stateControl.disable();
     }
 

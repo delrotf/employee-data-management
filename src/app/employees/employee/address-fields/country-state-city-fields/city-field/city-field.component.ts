@@ -28,7 +28,6 @@ export class CityFieldComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.cities = null;
-    this.cityControl.reset();
 
     if (this.state) {
       this.cityControl.enable();
@@ -37,6 +36,7 @@ export class CityFieldComponent implements OnInit, OnChanges {
         this.cities = CITIES[this.state.id];
       }
     } else {
+      this.cityControl.reset();
       this.cityControl.disable();
     }
     console.log('City onChanges ' + JSON.stringify(this.cities));
