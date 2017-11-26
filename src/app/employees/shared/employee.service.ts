@@ -14,9 +14,6 @@ export class EmployeeService {
   }
 
   upsertEmployee($key: string, employee: Employee) {
-    console.log('SUBMITTING@@@@@@@@@@@@@@@@@@@ ' + JSON.stringify(employee));
-
-    console.log('$key ' + $key);
     if ($key) {
       return this.employeeList.update($key, employee);
     } else {
@@ -28,17 +25,3 @@ export class EmployeeService {
     return this.employeeList.remove($key);
   }
 }
-// private _getStatesFromFirebase(): State[] {
-//   const statesDb: State[] = [];
-//   const angularFireList = this.firebase.list('states');
-//   angularFireList.snapshotChanges()
-//     .subscribe(item => {
-//       item.forEach(element => {
-//         // tslint:disable-next-line:prefer-const
-//         let state: State = <State>element.payload.toJSON();
-//         statesDb.push(state);
-//       });
-//     });
-
-//   return statesDb;
-// }
