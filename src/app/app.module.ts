@@ -42,6 +42,7 @@ import { SkillsFieldComponent } from './employees/employee/skills-field/skills-f
 import { HireDateFieldComponent } from './employees/employee/hire-date-field/hire-date-field.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { EmployeeSummaryComponent } from './employees/employee/employee-summary/employee-summary.component';
+import { ConfirmDeleteDialogComponent } from './employees/employee/confirm-delete-dialog/confirm-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { EmployeeSummaryComponent } from './employees/employee/employee-summary/
     HireDateFieldComponent,
     DatePickerComponent,
     EmployeeSummaryComponent,
+    ConfirmDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,8 @@ import { EmployeeSummaryComponent } from './employees/employee/employee-summary/
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    EmployeeComponent
+    EmployeeComponent,
+    ConfirmDeleteDialogComponent
 ],
 
 })
