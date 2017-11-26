@@ -43,7 +43,8 @@ export class EmployeeSummaryComponent implements OnInit {
 
     this.employeeService.delete(this.employee.$key);
 
-    const snackBarRef = this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been deleted.`, 'Undo');
+    const snackBarRef = this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been deleted.`,
+    'Undo');
     snackBarRef.onAction().subscribe(() => {
       delete this.employee['$key'];
       this.employeeService.upsertEmployee(this.employee);
