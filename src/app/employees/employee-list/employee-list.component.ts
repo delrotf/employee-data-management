@@ -34,12 +34,14 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
     this.employeeService.getData().snapshotChanges().subscribe(items => {
       const employees: any[] = [];
+      let i = 1;
       items.forEach(item => {
         const employee: Employee = <Employee>item.payload.val();
         employee['$key'] = item.key;
 
         console.log('employeeee ' + JSON.stringify(employee));
         employees.push({
+          index: i++,
           name: `${employee.name.firstname}  ${employee.name.lastname}`,
           birthday: employee.birthday,
           gender: employee.gender,

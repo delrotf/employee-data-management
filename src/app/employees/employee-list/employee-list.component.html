@@ -8,8 +8,6 @@
     </header>
 
     <mat-table #table [dataSource]="dataSource">
-
-        <!-- Firstname Column -->
         <ng-container matColumnDef="employees">
             <mat-header-cell *matHeaderCellDef> Employees </mat-header-cell>
             <mat-accordion>
@@ -17,7 +15,7 @@
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                {{employee.name}}
+                                {{employee.index}} {{employee.name}}
                             </mat-panel-title>
                             <mat-panel-description>
                                 {{employee.position}}, {{employee.office}}
