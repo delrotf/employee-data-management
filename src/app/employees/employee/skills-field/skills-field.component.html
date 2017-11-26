@@ -4,7 +4,7 @@
             {{skill.name}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
         </mat-chip>
+        <input placeholder="Skills..." (blur)="addToControl()" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
     </mat-chip-list>
-    <input placeholder="Skills..." (blur)="addToControl()" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
-    <mat-hint>Type in your skills. Press enter for each</mat-hint>
+    <mat-hint>Type in the skills. Press enter for each</mat-hint>
 </mat-form-field>
