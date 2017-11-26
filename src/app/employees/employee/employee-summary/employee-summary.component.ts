@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Employee, PreferenceText } from '../../shared/employee.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { EmployeeComponent } from '../employee.component';
 import { EmployeeService } from '../../shared/employee.service';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
@@ -17,7 +17,7 @@ export class EmployeeSummaryComponent implements OnInit {
 
   PreferenceText = PreferenceText;
 
-  constructor(private employeeService: EmployeeService, public dialog: MatDialog) { }
+  constructor(private employeeService: EmployeeService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.flatSkills = this.employee && this.employee.skills ? this.employee.skills.map(val => val.name).join(', ') : '';
@@ -38,7 +38,16 @@ export class EmployeeSummaryComponent implements OnInit {
   }
 
   delete() {
+    // sessionStorage.setItem('deletedItem', this.employee.$key);
+    // sessionStorage.setItem(this.employee.$key, JSON.stringify(this.employee));
+
     this.employeeService.delete(this.employee.$key);
+
+    const snackBarRef = this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been deleted.`, 'Undo');
+    snackBarRef.onAction().subscribe(() => {
+      delete this.employee['$key'];
+      this.employeeService.upsertEmployee(this.employee);
+    });
   }
 
   // opens the dialog for edit

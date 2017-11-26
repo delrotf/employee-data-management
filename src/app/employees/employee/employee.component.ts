@@ -4,7 +4,7 @@ import { Employee } from './../shared/employee.model';
 import { EmployeeService } from './../shared/employee.service';
 import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { MatDatepickerInputEvent, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDatepickerInputEvent, MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { minDate, maxDate } from '../../employees/validators/dateValidator';
 import { formatDate } from '../../app.util';
 import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
@@ -58,7 +58,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
   showProgress = false;
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<EmployeeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private employeeService: EmployeeService) {
+    @Inject(MAT_DIALOG_DATA) public data: any, public snackBar: MatSnackBar, private employeeService: EmployeeService) {
 
     if (data) {
       this.employee = data.employee;
@@ -77,8 +77,11 @@ export class EmployeeComponent implements OnInit, OnChanges {
     if (this.employeeForm.valid) {
       this.showProgress = true;
       console.log(JSON.stringify(this.employeeForm.value));
-      this.employeeService.upsertEmployee(this.employee.$key, this.employeeForm.value);
+      this.employeeService.upsertEmployee(this.employeeForm.value, this.employee.$key);
       this.dialogRef.close();
+      this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been saved.`, 'OK', {
+        duration: 3000,
+      });
     }
   }
 
