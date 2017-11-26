@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
     <input matInput placeholder="Email" [formControl]="emailControl" [errorStateMatcher]="matcher">
-    <mat-hint>Your email address</mat-hint>
+    <mat-hint>email address</mat-hint>
     <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
         Please enter a valid email address
     </mat-error>

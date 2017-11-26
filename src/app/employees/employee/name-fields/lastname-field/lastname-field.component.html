@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
     <input matInput placeholder="Lastname" [formControl]="lastnameControl" [errorStateMatcher]="matcher" required>
-    <mat-hint>Please enter your lastname</mat-hint>
+    <mat-hint>Please enter lastname</mat-hint>
     <mat-error *ngIf="lastnameControl.hasError('required')">
         Lastname is <strong>required</strong>
     </mat-error>

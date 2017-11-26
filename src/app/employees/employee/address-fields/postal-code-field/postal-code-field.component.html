@@ -1,6 +1,6 @@
 <mat-form-field class="example-full-width">
     <input matInput placeholder="Postal Code" [formControl]="postalCodeControl" [errorStateMatcher]="matcher">
-    <mat-hint>Postal Code of your address</mat-hint>
+    <mat-hint>Zip/ Postal Code</mat-hint>
     <mat-error *ngIf="postalCodeControl.hasError('required')">
         Postal Code is <strong>required</strong>
     </mat-error>
