@@ -4,20 +4,28 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EmployeeService {
-  employeeList: AngularFireList<any>;
-  selectedEmployee: Employee = new Employee();
+  employeeList: AngularFireList<any> = this.firebase.list('employees');
 
   constructor(private firebase: AngularFireDatabase) {
   }
 
   getData() {
-    this.employeeList = this.firebase.list('employees');
     return this.employeeList;
   }
 
-  insertEmployee(employee: Employee) {
+  upsertEmployee($key: string, employee: Employee) {
     console.log('SUBMITTING@@@@@@@@@@@@@@@@@@@ ' + JSON.stringify(employee));
-    return this.employeeList.push(employee);
+
+    console.log('$key ' + $key);
+    if ($key) {
+      return this.employeeList.update($key, employee);
+    } else {
+      return this.employeeList.push(employee);
+    }
+  }
+
+  delete($key: string) {
+    return this.employeeList.remove($key);
   }
 }
 // private _getStatesFromFirebase(): State[] {
