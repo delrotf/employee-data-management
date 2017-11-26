@@ -69,10 +69,6 @@ export class EmployeeComponent implements OnInit, OnChanges {
       console.log(this.employeeForm);
     }
   }
-  onNoClick(): void {
-    // this.dialogRef.close();
-    console.log('onNoClick');
-  }
 
   submit() {
 
@@ -86,7 +82,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
     if (this.employeeForm.valid) {
       this.showProgress = true;
       console.log(JSON.stringify(this.employeeForm.value));
-      this.employeeService.insertEmployee(this.employeeForm.value);
+      this.employeeService.upsertEmployee(this.employee.$key, this.employeeForm.value);
       this.dialogRef.close();
     }
   }
