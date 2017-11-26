@@ -77,7 +77,12 @@ export class EmployeeComponent implements OnInit, OnChanges {
     if (this.employeeForm.valid) {
       this.showProgress = true;
       console.log(JSON.stringify(this.employeeForm.value));
-      this.employeeService.upsertEmployee(this.employeeForm.value, this.employee.$key);
+      if (this.employee && this.employee.$key) {
+        this.employeeService.upsertEmployee(this.employeeForm.value, this.employee.$key);
+      } else {
+        this.employeeService.upsertEmployee(this.employeeForm.value);
+      }
+
       this.dialogRef.close();
       this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been saved.`, 'OK', {
         duration: 3000,
