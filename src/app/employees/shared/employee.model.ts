@@ -1,3 +1,5 @@
+import { State } from '../employee/address-fields/country-state-city-fields/state-field/state.model';
+
 // ng g class employee.model
 
 export class Employee {
@@ -15,7 +17,7 @@ export class Employee {
     address: {
         address: string;
         country: string;
-        state: string;
+        state: State;
         city: string;
         postalCode: string;
     };
