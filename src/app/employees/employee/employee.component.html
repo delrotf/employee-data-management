@@ -51,7 +51,7 @@
     </mat-dialog-content>
     <mat-progress-bar mode="indeterminate" *ngIf="showProgress"></mat-progress-bar>
     <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button [mat-dialog-close]="employeeForm.value" (click)="upsert()" [disabled]="!employeeForm?.valid">Submit</button>
+        <button mat-fab color="basic" mat-dialog-close>Cancel</button>
+        <button mat-fab color="primary" [mat-dialog-close]="employeeForm.value" (click)="upsert()" [disabled]="!employeeForm?.valid">Submit</button>
     </mat-dialog-actions>
 </form>
