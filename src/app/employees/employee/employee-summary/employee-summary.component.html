@@ -2,38 +2,39 @@
     <article>
         <section>
             <mat-card-title>Personal Data</mat-card-title>
-            <div>Firstname: <span>{{employee.name.firstname}}</span></div>
-            <div>Lastname: <span>{{employee.name.lastname}}</span></div>
-            <div>Birthday: <span>{{employee.birthday}}</span></div>
-            <div>Gender: <span>{{employee.gender}}</span></div>
-            <div>Civil Status: <span>{{employee.civilStatus}}</span></div>
+            <div><label>Firstname: </label><span>{{employee.name.firstname}}</span></div>
+            <div><label>Lastname: </label><span>{{employee.name.lastname}}</span></div>
+            <div><label>Birthday: </label><span>{{employee.birthday}}</span></div>
+            <div><label>Gender: </label><span>{{employee.gender}}</span></div>
+            <div><label>Civil Status: </label><span>{{employee.civilStatus}}</span></div>
         </section>
         <section>
             <mat-card-title>Contact Info</mat-card-title>
-            <div>eMail: <span>{{employee.email}}</span></div>
-            <div>cel/Tel #: <span>{{employee.tel}}</span></div>
-            <div>Address: <span>{{employee.address.address}}</span></div>
-            <div>Country: <span>{{employee.address.country}}</span></div>
-            <div>State: <span>{{employee.address.state}}</span></div>
-            <div>City: <span>{{employee.address.city}}</span></div>
-            <div>Postal Code: <span>{{employee.address.postalCode}}</span></div>
+            <div><label>eMail: </label><span>{{employee.email}}</span></div>
+            <div><label>cel/Tel #: </label><span>{{employee.tel}}</span></div>
+            <div><label>Address: </label><span>{{employee.address.address}}</span></div>
+            <div><label>Country: </label><span>{{employee.address.country}}</span></div>
+            <div><label>State: </label><span>{{employee.address.state.name}}</span></div>
+            <div><label>City: </label><span>{{employee.address.city}}</span></div>
+            <div><label>Postal Code: </label><span>{{employee.address.postalCode}}</span></div>
         </section>
         <section>
             <mat-card-title>Employement Data</mat-card-title>
-            <div>Position: <span>{{employee.position}}</span></div>
-            <div>Office: <span>{{employee.office}}</span></div>
-            <div>Salary: <span>{{employee.salary}}</span></div>
-            <div>Hire Date: <span>{{employee.hireDate}}</span></div>
-            <div>{{PreferenceText.travel}}<span>{{employee.preferences.travel ? 'Yes' : 'No'}}</span></div>
-            <div>{{PreferenceText.nightshift}}<span>{{employee.preferences.nightshift ? 'Yes' : 'No'}}</span></div>
-            <div>{{PreferenceText.wokrAtHome}}<span>{{employee.preferences.workAtHome ? 'Yes' : 'No'}}</span></div>
-            <div>{{PreferenceText.stockOption}}<span>{{employee.preferences.stockOption ? 'Yes' : 'No'}}</span></div>
+            <div><label>Position: </label><span>{{employee.position}}</span></div>
+            <div><label>Office: </label><span>{{employee.office}}</span></div>
+            <div><label>Salary: </label><span>{{employee.salary}}</span></div>
+            <div><label>Hire Date: </label><span>{{employee.hireDate}}</span></div>
+            <div><label>Skills: </label><span>{{flatSkills}}</span></div>
+            <div><label>{{PreferenceText.travel}}</label><span>{{employee.preferences.travel ? 'Yes' : 'No'}}</span></div>
+            <div><label>{{PreferenceText.nightshift}}</label><span>{{employee.preferences.nightshift ? 'Yes' : 'No'}}</span></div>
+            <div><label>{{PreferenceText.wokrAtHome}}</label><span>{{employee.preferences.workAtHome ? 'Yes' : 'No'}}</span></div>
+            <div><label>{{PreferenceText.stockOption}}</label><span>{{employee.preferences.stockOption ? 'Yes' : 'No'}}</span></div>
         </section>
     </article>
     <mat-card-footer>
         <mat-card-actions>
-            <button mat-button (click)="openDialog(employee)">Edit</button>
-            <button mat-button>Delete</button>
+            <button mat-button (click)="edit()"><mat-icon>edit</mat-icon> Edit</button>
+            <button mat-button (click)="confirmDelete()"><mat-icon>delete</mat-icon> Delete</button>
         </mat-card-actions>
     </mat-card-footer>
 </mat-card>

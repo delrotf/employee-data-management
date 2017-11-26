@@ -4,9 +4,10 @@ import { Employee } from './../shared/employee.model';
 import { EmployeeService } from './../shared/employee.service';
 import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { MatDatepickerInputEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDatepickerInputEvent, MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { minDate, maxDate } from '../../employees/validators/dateValidator';
 import { formatDate } from '../../app.util';
+import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -64,13 +65,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.showProgress) {
-      console.log(this.employeeForm);
-    }
-  }
-
-  submit() {
+  upsert() {
 
     if (this.genderControl.hasError('required')) {
       this.genderControl.markAsTouched();
@@ -84,6 +79,12 @@ export class EmployeeComponent implements OnInit, OnChanges {
       console.log(JSON.stringify(this.employeeForm.value));
       this.employeeService.upsertEmployee(this.employee.$key, this.employeeForm.value);
       this.dialogRef.close();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.showProgress) {
+      console.log(this.employeeForm);
     }
   }
 

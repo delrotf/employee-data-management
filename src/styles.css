@@ -5,8 +5,19 @@
     box-sizing: border-box;
 }
 
+html,
+body,
+main {
+    height: 100%;
+}
+
 body {
-    background-color: cadetblue;
+    background-color: darkcyan;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    color: azure;
 }
 
 .mat-form-field-wrapper {
@@ -35,7 +46,7 @@ app-skills-field .mat-form-field {
     display: block;
 }
 
-mat-card.mat-card {
+app-employee mat-card.mat-card {
     /* max-width: 412.8px; */
     margin-bottom: 20px;
     display: flex;
@@ -44,11 +55,39 @@ mat-card.mat-card {
     max-width: 500px;
 }
 
-mat-card article {
+app-employee mat-card article {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 364.8px;
+}
+
+app-employee-summary section {
+    margin-bottom: 25px;
+}
+
+app-employee-summary .mat-card-title {
+    text-align: center;
+}
+
+app-employee-summary .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+app-employee-list .mat-table-container {
+    max-width: 800px;
+    background-color: cadetblue;
+}
+
+mat-card-actions.mat-card-actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 app-gender-field {
@@ -74,7 +113,77 @@ app-gender-field {
     height: 50px;
 }
 
+.mat-expansion-panel-header-description {
+    justify-content: flex-end;
+}
+
+app-employee-summary article {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+app-employee-summary span {
+    font-size: 16px;
+}
+
+app-employee-summary label {
+    color: rgba(0, 0, 0, .54);
+    display: block;
+}
+
+.mat-dialog-content p {
+    text-align: center;
+}
+
+
+/* Structure */
+
+.mat-table-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin: auto;
+}
+
+.mat-table-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.mat-table-header .mat-form-field {
+    font-size: 14px;
+    /* width: 100%; */
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* app-root main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+} */
+
 @media screen and (max-width: 556px) {
+    html,
+    body,
+    main {
+        height: inherit;
+    }
     mat-form-field.mat-form-field {
         display: block;
     }
@@ -83,5 +192,11 @@ app-gender-field {
     }
     .preferences {
         height: 96px;
+    }
+    app-employee-list mat-expansion-panel-header.mat-expansion-panel-header {
+        padding: inherit;
+    }
+    app-employee-list .mat-expansion-panel-body {
+        padding: inherit;
     }
 }
