@@ -1,7 +1,9 @@
 <div class="mat-table-container mat-elevation-z8">
     <header class="mat-table-header">
+        <button mat-button (click)="openDialog()"><mat-icon>account_circle</mat-icon>Add new Employee</button>
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input matInput (keyup)="applyFilter($event.target.value)">
+            <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
     </header>
 
@@ -31,7 +33,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns; let employee"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         <!-- <mat-row *matRowDef="let row; columns: displayedColumns; let employee" (click)="openDialog(employee)"></mat-row> -->
     </mat-table>
 </div>

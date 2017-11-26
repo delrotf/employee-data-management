@@ -36,22 +36,23 @@ export class EmployeeListComponent implements OnInit {
       const employees: any[] = [];
       items.forEach(item => {
         const employee: Employee = <Employee>item.payload.val();
+        employee['$key'] = item.key;
+
         console.log('employeeee ' + JSON.stringify(employee));
-        const flatEmployee = {
+        employees.push({
           name: `${employee.name.firstname}  ${employee.name.lastname}`,
           birthday: employee.birthday,
           gender: employee.gender,
           civilStatus: employee.civilStatus,
           address: employee.address.address,
           country: employee.address.country,
-          state: employee.address.state,
+          state: employee.address.state ? employee.address.state.name : employee.address.state,
           city: employee.address.city,
           postalCode: employee.address.postalCode,
           email: employee.email,
           tel: employee.tel,
           position: employee.position,
-          // tslint:disable-next-line:no-shadowed-variable
-          skills: employee.skills ? employee.skills.map(item => item.name).join(', ') : employee.skills,
+          skills: employee.skills ? employee.skills.map(val => val.name).join(', ') : employee.skills,
           hireDate: employee.hireDate,
           office: employee.office,
           salary: employee.salary,
@@ -60,16 +61,14 @@ export class EmployeeListComponent implements OnInit {
           workAtHome: employee.preferences.workAtHome,
           stockOption: employee.preferences.stockOption,
           employee: employee
-        };
-        console.log('flatEmploy$$$$$$$$$$$ ' + JSON.stringify(flatEmployee));
-        employees.push(flatEmployee);
+        });
       });
       console.log('##############' + employees);
       this.dataSource = new MatTableDataSource(employees);
     });
 
   }
-  openDialog(employee: Employee) {
+  openDialog(employee?: Employee) {
     const dialogRef = this.dialog.open(EmployeeComponent, {
       data: { employee: employee }
     });
