@@ -13,7 +13,7 @@ export class EmployeeService {
     return this.employeeList;
   }
 
-  upsertEmployee($key: string, employee: Employee) {
+  upsertEmployee(employee: Employee, $key?: string) {
     if ($key) {
       return this.employeeList.update($key, employee);
     } else {
