@@ -64,6 +64,7 @@ app-employee mat-card article {
 
 app-employee-summary section {
     margin-bottom: 25px;
+    flex-grow: 1;
 }
 
 app-employee-summary .mat-card-title {
