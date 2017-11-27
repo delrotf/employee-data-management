@@ -26,7 +26,7 @@ export class EmployeeSummaryComponent implements OnInit {
   // open the dialog for delete confirmation
   confirmDelete() {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
-      data: { employee: this.employee }
+      data: { employee: this.employee }, minWidth: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -44,7 +44,7 @@ export class EmployeeSummaryComponent implements OnInit {
     this.employeeService.delete(this.employee.$key);
 
     const snackBarRef = this.snackBar.open(`${this.employee.name.firstname} ${this.employee.name.lastname} has been deleted.`,
-    'Undo');
+      'Undo');
     snackBarRef.onAction().subscribe(() => {
       delete this.employee['$key'];
       this.employeeService.upsertEmployee(this.employee);
