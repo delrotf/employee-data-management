@@ -76,6 +76,7 @@ app-employee-summary .mat-card-title {
 
 app-employee-summary .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: none;
+    background-color: plum;
 }
 
 app-employee-list .mat-table-container {
@@ -88,9 +89,9 @@ mat-card-actions.mat-card-actions {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-    -ms-flex-pack: space-evenly;
-    justify-content: space-evenly;
+    -webkit-box-pack: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
@@ -171,7 +172,7 @@ app-employee-summary label {
 
 .mat-dialog-actions {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
