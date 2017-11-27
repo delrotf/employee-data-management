@@ -27,7 +27,7 @@ export class CountryFieldComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.countries = COUNTRIES;
-      console.log(' this.countryControl.value ' + this.countryControl.value);
+      // console.log(' this.countryControl.value ' + this.countryControl.value);
       this.filteredOptions = this.countryControl.valueChanges
         .startWith('')
         .map(val => this.filter(val));

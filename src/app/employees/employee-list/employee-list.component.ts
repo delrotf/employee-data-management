@@ -39,7 +39,7 @@ export class EmployeeListComponent implements OnInit {
         const employee: Employee = <Employee>item.payload.val();
         employee['$key'] = item.key;
 
-        console.log('employeeee ' + JSON.stringify(employee));
+        // console.log('employeeee ' + JSON.stringify(employee));
         employees.push({
           index: i++,
           name: `${employee.name.firstname}  ${employee.name.lastname}`,
@@ -65,7 +65,6 @@ export class EmployeeListComponent implements OnInit {
           employee: employee
         });
       });
-      console.log('##############' + employees);
       this.dataSource = new MatTableDataSource(employees);
     });
 
@@ -75,8 +74,8 @@ export class EmployeeListComponent implements OnInit {
       data: { employee: employee }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 }

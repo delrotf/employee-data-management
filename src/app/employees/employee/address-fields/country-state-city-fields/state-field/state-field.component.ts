@@ -32,24 +32,24 @@ export class StateFieldComponent implements OnInit, OnChanges {
     if (this.country) {
       this.states = STATES[this.country];
       this.stateControl.enable();
-      console.log('this.stateControl.value ' + this.stateControl.value);
+      // console.log('this.stateControl.value ' + this.stateControl.value);
     } else {
       this.stateControl.reset();
       this.stateControl.disable();
     }
 
-    console.log('State onChanges ' + this.states);
+    // console.log('State onChanges ' + this.states);
     this.stateControl.updateValueAndValidity();
 
-    console.log('ngOnInit ' + this.states);
+    // console.log('ngOnInit ' + this.states);
     this.filteredOptions = this.stateControl.valueChanges
       .startWith(null)
       .map(state => {
-        console.log('map state ' + state);
+        // console.log('map state ' + state);
         return state && typeof state === 'object' ? state.name : state;
       })
       .map(name => {
-        console.log('map name ' + name);
+        // console.log('map name ' + name);
         return name ? this.filter(name) : this.states ? this.states.slice() : null;
       });
   }

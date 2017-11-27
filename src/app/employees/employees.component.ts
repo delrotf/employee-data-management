@@ -18,9 +18,9 @@ export class EmployeesComponent implements OnInit {
     const dialogRef = this.dialog.open(EmployeeComponent, {
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
   ngOnInit() {

@@ -76,7 +76,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
     if (this.employeeForm.valid) {
       this.showProgress = true;
-      console.log(JSON.stringify(this.employeeForm.value));
+      // console.log(JSON.stringify(this.employeeForm.value));
       if (this.employee && this.employee.$key) {
         this.employeeService.upsertEmployee(this.employeeForm.value, this.employee.$key);
       } else {
@@ -91,12 +91,13 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.showProgress) {
-      console.log(this.employeeForm);
-    }
+    // if (this.showProgress) {
+    //   console.log(this.employeeForm);
+    // }
   }
 
   ngOnInit() {
+    console.log('already heare');
     const employee = this.employee;
 
     this.firstnameControl = new FormControl(employee ? employee.name.firstname : '', Validators.required);

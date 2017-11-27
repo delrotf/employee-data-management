@@ -30,7 +30,7 @@ export class EmployeeSummaryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
       if (result === 'Yes') {
         this.delete();
       }
@@ -57,8 +57,8 @@ export class EmployeeSummaryComponent implements OnInit {
       data: { employee: this.employee }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 }

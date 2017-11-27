@@ -31,7 +31,7 @@ export class CityFieldComponent implements OnInit, OnChanges {
 
     if (this.state) {
       this.cityControl.enable();
-      console.log('this.state ' + JSON.stringify(this.state));
+      // console.log('this.state ' + JSON.stringify(this.state));
       if (this.state.id) {
         this.cities = CITIES[this.state.id];
       }
@@ -39,14 +39,14 @@ export class CityFieldComponent implements OnInit, OnChanges {
       this.cityControl.reset();
       this.cityControl.disable();
     }
-    console.log('City onChanges ' + JSON.stringify(this.cities));
+    // console.log('City onChanges ' + JSON.stringify(this.cities));
 
     this.cityControl.updateValueAndValidity();
 
     this.filteredOptions = this.cityControl.valueChanges
       .startWith('')
       .map(val => {
-        console.log('val ' + val);
+        // console.log('val ' + val);
         return this.filter(val);
       });
   }
@@ -55,7 +55,7 @@ export class CityFieldComponent implements OnInit, OnChanges {
   }
 
   filter(val: string): string[] {
-    console.log('filter this.cities ' + JSON.stringify(this.cities));
+    // console.log('filter this.cities ' + JSON.stringify(this.cities));
     if (this.cities) {
       if (val) {
       return this.cities.filter(option =>
