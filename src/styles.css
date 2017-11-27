@@ -5,12 +5,11 @@
     box-sizing: border-box;
 }
 
-
-/* html,
+html,
 body,
 main {
     height: 100%;
-} */
+}
 
 body {
     /* background-color: darkcyan; */
@@ -22,7 +21,7 @@ body {
 }
 
 .mat-form-field-wrapper {
-    margin-bottom: 0.75em;
+    margin-bottom: 2.5em;
 }
 
 legend {
@@ -31,7 +30,7 @@ legend {
 }
 
 app-birthday-field .mat-form-field-wrapper {
-    margin-bottom: 1.75em;
+    margin-bottom: 2.5em;
 }
 
 .example-radio-button {
@@ -66,6 +65,9 @@ app-employee mat-card article {
 app-employee-summary section {
     margin-bottom: 25px;
     flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 app-employee-summary .mat-card-title {
@@ -106,7 +108,7 @@ app-gender-field {
 
 .gender,
 .civil-status {
-    margin-bottom: 1.25em;
+    margin-bottom: 2.5em;
 }
 
 .preferences {
@@ -120,7 +122,7 @@ app-gender-field {
     justify-content: flex-end;
 }
 
-app-employee-summary article {
+app-employee-summary article>div {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -154,7 +156,7 @@ app-employee-summary label {
     padding: 8px 24px 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: flex-end;
 }
 
 .mat-table-header .mat-form-field {
@@ -170,6 +172,18 @@ app-employee-summary label {
 .mat-dialog-actions {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.mat-dialog-container {
+    margin: auto;
+    width: 80vh;
+}
+
+.employment-data {
+    display: inline-flex;
+    justify-content: space-between;
+    /* margin: auto; */
     flex-wrap: wrap;
 }
 
@@ -192,6 +206,7 @@ app-employee-summary label {
     z-index: 1000;
     right: 20px;
     bottom: 10px;
+    opacity: 0.9;
 }
 
 @media screen and (max-width: 556px) {
