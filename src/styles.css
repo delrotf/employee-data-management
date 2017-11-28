@@ -20,6 +20,18 @@ app-about-dialog .mat-dialog-content p {
     text-align: left;
 }
 
+@media screen and (max-width: 600px) {
+    .my-full-screen-dialog .mat-dialog-container {
+        max-width: none;
+        width: 100vw;
+        height: 100vh;
+    }
+    div.cdk-global-overlay-wrapper,
+    .cdk-overlay-container {
+        width: inherit;
+    }
+}
+
 .mat-toolbar {
     margin-bottom: 20px;
     display: flex;

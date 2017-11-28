@@ -10,9 +10,11 @@ import { AboutDialogComponent } from './employees/about-dialog/about-dialog.comp
 export class AppComponent {
   title = 'Employee Data Management';
   constructor( public dialog: MatDialog) {
-    this.dialog.open(AboutDialogComponent);
+    this.openDialog();
   }
   openDialog() {
-    this.dialog.open(AboutDialogComponent);
+    this.dialog.open(AboutDialogComponent, {
+      maxWidth: '600px', panelClass: 'my-full-screen-dialog',
+    });
   }
 }

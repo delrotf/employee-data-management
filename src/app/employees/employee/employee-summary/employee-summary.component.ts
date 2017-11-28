@@ -26,7 +26,7 @@ export class EmployeeSummaryComponent implements OnInit {
   // open the dialog for delete confirmation
   confirmDelete() {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
-      data: { employee: this.employee }, minWidth: '300px'
+      data: { employee: this.employee }, minWidth: '300px', panelClass: 'my-full-screen-dialog',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -54,7 +54,7 @@ export class EmployeeSummaryComponent implements OnInit {
   // opens the dialog for edit
   edit() {
     const dialogRef = this.dialog.open(EmployeeComponent, {
-      data: { employee: this.employee }
+      data: { employee: this.employee }, panelClass: 'my-full-screen-dialog',
     });
 
     // dialogRef.afterClosed().subscribe(result => {

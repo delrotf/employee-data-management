@@ -16,6 +16,7 @@ export class EmployeesComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(EmployeeComponent, {
+      panelClass: 'my-full-screen-dialog',
     });
 
     // dialogRef.afterClosed().subscribe(result => {

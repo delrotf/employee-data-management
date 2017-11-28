@@ -71,7 +71,7 @@ export class EmployeeListComponent implements OnInit {
   }
   openDialog(employee?: Employee) {
     const dialogRef = this.dialog.open(EmployeeComponent, {
-      data: { employee: employee }
+      data: { employee: employee }, panelClass: 'my-full-screen-dialog',
     });
 
     // dialogRef.afterClosed().subscribe(result => {
