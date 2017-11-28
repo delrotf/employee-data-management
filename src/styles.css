@@ -16,8 +16,14 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+app-about-dialog .mat-dialog-content p {
+    text-align: left;
+}
+
 .mat-toolbar {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .mat-form-field-wrapper {
