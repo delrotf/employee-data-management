@@ -92,6 +92,10 @@ app-employee-summary .mat-card-title {
     text-align: center;
 }
 
+app-employee-list .mat-expansion-panel-body {
+    background-color: plum;
+}
+
 app-employee-summary .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: none;
     background-color: plum;
