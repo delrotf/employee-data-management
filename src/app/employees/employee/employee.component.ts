@@ -25,6 +25,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   providers: [EmployeeService],
 })
 export class EmployeeComponent implements OnInit, OnChanges {
+  @Input() title = 'Add an Employee';
   @Input() employee: Employee;
 
   employeeForm: FormGroup;
@@ -62,6 +63,9 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
     if (data) {
       this.employee = data.employee;
+      if (this.employee) {
+        this.title = 'Edit Employee Info';
+      }
     }
   }
 
@@ -97,7 +101,6 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('already heare');
     const employee = this.employee;
 
     this.firstnameControl = new FormControl(employee ? employee.name.firstname : '', Validators.required);
