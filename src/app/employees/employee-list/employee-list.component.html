@@ -14,11 +14,11 @@
         <ng-container matColumnDef="employees">
             <mat-header-cell *matHeaderCellDef> List of Employees </mat-header-cell>
             <mat-accordion>
-                <mat-cell *matCellDef="let employee">
+                <mat-cell *matCellDef="let employee; let i = index">
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                {{employee.index}}. {{employee.name}}
+                                {{i + 1}}. {{employee.name}}
                             </mat-panel-title>
                             <mat-panel-description>
                                 {{employee.position}}, {{employee.office}}
