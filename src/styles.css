@@ -178,6 +178,10 @@ app-employee-summary label {
     justify-content: flex-end;
 }
 
+.mat-header-row {
+    background-color: lightgray;
+}
+
 .mat-table-header .mat-form-field {
     font-size: 14px;
     /* width: 100%; */
